@@ -10,6 +10,9 @@ module.exports = {
       lg: '976px',
       xl: '1440px',
     },
+    fontFamily: {
+      'nunito': ['sans-serif']
+    },
     extend: {},
   },
   plugins: [],
