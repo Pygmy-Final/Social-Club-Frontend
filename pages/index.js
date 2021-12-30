@@ -1,6 +1,10 @@
 import Head from "next/head";
-import Header from "../components/Header";
+import BeforeAuthHeader from "../components/BeforeAuthHeader";
 import HomePage from "../components/HomePage";
+import Sidebar from "../components/Sidebar";
+
+import EventForm from  "../components/EventForm";
+
 import SuccessMessage from "../components/SuccessMessage";
 
 export default function index() {
@@ -11,17 +15,20 @@ export default function index() {
           <title>Social Club</title>
         </Head>
 
-        <Header />
-
+        {/* <Header /> */}
+        <BeforeAuthHeader/>
+        {/* <Sidebar/> */}
+            {/* <HomePage /> */}
+{/* <EventForm/> */}
         {/* <SuccessMessage /> */}
 
-        <div className="fixed top-5 left-0 right-0 rounded-md bg-[#E7ECEF] drop-shadow-2xl -z-50  h-[47.5rem] ">
-          <main className="h-96">
+        {/* <div className="fixed top-5 left-0 right-0 rounded-md bg-[#E7ECEF] drop-shadow-2xl -z-50  h-[47.5rem] ">
+          <main className="h-96"> */}
             {/* <Sidebar/> */}
             {/* <HomePage /> */}
-            <HomePage />
-          </main>
-        </div>
+            {/* <HomePage />
+          </main> */}
+        {/* </div> */}
       </div>
     </div>
   );
