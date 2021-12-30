@@ -1,35 +1,28 @@
-import Head from 'next/head'
-import Header from '../components/Header'
+import Head from "next/head";
+import Header from "../components/Header";
+import HomePage from "../components/HomePage";
+import SuccessMessage from "../components/SuccessMessage";
 
-
-export default function Home() {
+export default function index() {
   return (
-    <div className="bg-gradient-to-r from-[#516F91] to-[#326094] h-screen ...">
-
+    <div className="bg-[#E7ECEF] ">
       <div className="h-screen scale-95 rounded-md ">
-
         <Head>
           <title>Social Club</title>
         </Head>
-        <div >
 
-          <Header />
-        </div>
-        {/* <nav class='bg-white shadow-sm p-6 space-y-6 w-64'> Navbar </nav> */}
-        <div className='fixed top-5 left-0 right-0 rounded-md bg-[#E7ECEF] -z-50  h-[47.5rem] '>
+        <Header />
 
-          <main className='h-96'>
-            <div className='h-14'>
+        {/* <SuccessMessage /> */}
 
-            </div>
-
-            <h1 className>sdfsdfs</h1>
-
-
+        <div className="fixed top-5 left-0 right-0 rounded-md bg-[#E7ECEF] drop-shadow-2xl -z-50  h-[47.5rem] ">
+          <main className="h-96">
+            {/* <Sidebar/> */}
+            {/* <HomePage /> */}
+            <HomePage />
           </main>
         </div>
       </div>
-
     </div>
-  )
+  );
 }
