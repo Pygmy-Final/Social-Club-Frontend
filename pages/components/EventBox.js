@@ -23,9 +23,9 @@ function EventBox(props) {
                 </div>
                 <div className='absolute inline-block top-0 left-0  rounded-[3rem]'>
                     <Image className='inline-block rounded-[3rem]' src={glassy} alt="glassy picture" />
-                    <div className='absolute sm:h-[0.5rem] md:h-[0.5rem] lg:h-[1rem] xsm:w-[2.5rem] sm:w-[3rem] md:w-[3.2rem] lg:w-[3rem] sm:mr-1 md:mr-3 lg:mr-6 top-5 left-5 rounded-full inline-block rounded-[3rem] sm:mr-1 md:mr-3 lg:mr-6'>
+                    <div className='absolute inline-block w-10 rounded-full top-5 left-5 '>
 
-                        <Image className='absolute rounded-full rounded-[3rem]' src={avatar} alt="avatar" />
+                        <Image className='rounded-full' src={avatar} alt="avatar" />
                     </div>
                     <div className='h-2 max-h-full absolute max-w-[50%] top-[1.7rem] left-[5rem] translate-10 ...'>
                         <h3 className='font-bold xsm:text-[0.8rem] sm:text-[0.9rem] md:text-[1rem] lg:text-[1.1rem] text-white ...'>
@@ -38,7 +38,7 @@ function EventBox(props) {
                     <div>
                         <div className='mx-5 rounded-[1.5rem] absolute h-[4rem] w-[21rem] bg-blue-200 bg-opacity-10   bottom-[2rem]'>
 
-                        <p className='absolute mx-4 text-white bottom-[0.5rem] xsm:text-[0.8rem] sm:text-[0.8rem] md:text-[0.9rem] lg:text-[1.1rem] font-semibold  '>abjd hawz 7o6e kalmon shalkl al estaz b2a monsag emon</p>
+                        <p className='absolute mx-4 text-left text-white bottom-[0.5rem] xsm:text-[0.5rem] sm:text-[0.8rem] md:text-[0.9rem] lg:text-[1.1rem] font-semibold  '>abjd hawz 7o6e kalmon shalkl al estaz b2a monsag emon</p>
                         </div>
 
                     </div>
