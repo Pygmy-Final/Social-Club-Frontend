@@ -3,7 +3,6 @@ import Image from "next/image";
 import React, { useState } from "react";
 import logout from "./images/logout.png";
 import { useEffect } from "react"
-
 export default function Header() {
     
     let currentDate = new Date();
