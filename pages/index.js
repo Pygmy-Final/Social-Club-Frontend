@@ -3,7 +3,7 @@ import BeforeAuthHeader from "../components/BeforeAuthHeader";
 import HomePage from "../components/HomePage";
 import Sidebar from "../components/Sidebar";
 
-import EventForm from  "../components/EventForm";
+import EventBox from  "../components/EventBox";
 
 import SuccessMessage from "../components/SuccessMessage";
 
@@ -17,6 +17,7 @@ export default function index() {
 
         {/* <Header /> */}
         <BeforeAuthHeader/>
+        <EventBox/>
         {/* <Sidebar/> */}
             {/* <HomePage /> */}
 {/* <EventForm/> */}
