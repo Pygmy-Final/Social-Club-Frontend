@@ -89,7 +89,7 @@ export default function Header() {
                     <span className="float-right mr-20 ">
                         <h id='lblGreetings' className="mr-4"> {greeting}</h>
                         <img className='inline-block mr-6 rounded-full' src="https://www.w3schools.com/howto/img_avatar.png" width={30} height={30} alt="Avatar" />
-
+                
                         <Image onClick={buttonHandler} className='hover:m-10' src={logout} width={21.6} height={18.36} />
 
                     </span>
