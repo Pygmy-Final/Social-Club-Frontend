@@ -7,14 +7,12 @@ import { useEffect } from 'react'
 
 import ChatActive from './ChatActive'
 function Chats(props) {
-
     useEffect(() => {
         // this to scroll down the chat box so the latest msgs show up once the user open the msg
         // 🛑 this should re-run on-click on another chat later on
         let elem = document.getElementById('chatBox');
         elem.scrollTop = elem.scrollHeight;
     })
-
     return (
         <div className='pt-[4rem] min-h-[10rem] min-w-full rounded-[1.5rem]'>
             <div className='shadow-2xl bg-white mx-[5rem] min-h-full min-w-[80%] rounded-[1.5rem]'>
