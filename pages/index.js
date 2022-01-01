@@ -3,6 +3,8 @@ import BeforeAuthHeader from "./components/BeforeAuthHeader";
 import HomePage from "./components/HomePage";
 import Sidebar from "./components/Sidebar";
 import Profile from "./components/Profile";
+import Chats from "./components/Chats"
+import Followers from './components/Followers'
 
 import EventBox from "./components/EventBox";
 
@@ -19,16 +21,20 @@ export default function index() {
 
         {/* <Header /> */}
         <BeforeAuthHeader />
-        <div className=" grid  sm:gap-x-4 sm:gap-y-2 sm:grid-cols-1 sm:m-[0.5rem] ... md:gap-x-6 md:gap-y-4 md:grid-cols-2 md:m-[0.75rem] ... lg:gap-x-2 lg:gap-y-4 lg:grid-cols-[300px_1fr_300px] lg:m-[rem]">
-          <div>
-            <Sidebar />
-          </div>
+
+        {/* <div className=" grid  sm:gap-x-4 sm:gap-y-2 sm:grid-cols-1 sm:m-[0.5rem] ... md:gap-x-6 md:gap-y-4 md:grid-cols-2 md:m-[0.75rem] ... lg:gap-x-2 lg:gap-y-4 lg:grid-cols-[300px_1fr_300px] lg:m-[rem]"> */}
+        <div className=" grid lg:grid-cols-[300px_1fr]">
+
+
           {/* <Profile /> */}
-          {/* <Followers/> */}
+          <div></div>
+          <Followers/>
           {/* <EventBox/> */}
+
+
           <div>
-            <Notification />
-            <QrCode />
+            {/* <Notification />
+            <QrCode /> */}
           </div>
         </div>
         {/* <Sidebar/> */}
