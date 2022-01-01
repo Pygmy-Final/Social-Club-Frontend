@@ -2,13 +2,16 @@ import React from "react";
 import { useState, useRef } from "react";
 
 export default function EventForm() {
-  const [open, setOpen] = useState(true);
-  const cancelButton = useRef(null);
+  const [open, setOpen] = useState(false);
+  
+  const submitHandler =()=>{
+    setOpen(true);
+  }
 
   return (
     <div>
-      <div class="py-12">
-        <h2 class="text-2xl font-bold text-[#1E2A3D]">Create Event</h2>
+      <div class="py-12 absolute left-0 top-0 p-20 bg-red-400">
+        <h2 class="text-2xl  font-bold text-[#1E2A3D]">Create Event</h2>
         <div class="mt-8 max-w-md">
           <div class="grid grid-cols-1 gap-6">
             <label class="block">

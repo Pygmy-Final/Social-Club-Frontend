@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Followers() {
 	return (
-		<div className='flex flex-col overflow-auto divide-y h-[40rem] dark:divide-gray-200/5  '>
+		<div className='flex mt-10 flex-col overflow-auto divide-y h-[40rem] dark:divide-gray-200/5  '>
 			<div class="bg-white p-8 rounded-md w-full">
 				<div class=" flex items-center justify-between pb-6">
 					<h1 className='text-[#15263a]'><b>Followers List</b></h1>
@@ -26,14 +26,14 @@ export default function Followers() {
 								<thead>
 									<tr>
 										<th
-											class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+											class="px-5 py-3 border-b-2 border-gray-200 bg-[#503E9D] text-left text-xs font-semibold text-[#F8F8FB] uppercase tracking-wider">
 											Name
 										</th>
 									
 										
 										
 										<th
-											class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+											class="px-5 py-3 border-b-2 border-gray-200 bg-[#503E9D] text-left text-xs font-semibold text-[#F8F8FB] uppercase tracking-wider">
 											Status
 										</th>
 									</tr>
@@ -115,31 +115,7 @@ export default function Followers() {
 												</span>
 											</td>
 									</tr>
-									<tr>
-										<td class="px-5 py-5 bg-white text-sm">
-											<div class="flex items-center">
-												<div class="flex-shrink-0 w-10 h-10">
-													<img class="w-full h-full rounded-full"
-														src="https://images.unsplash.com/photo-1522609925277-66fea332c575?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&h=160&w=160&q=80"
-														alt="" />
-												</div>
-												<div class="ml-3">
-													<p class="text-gray-900 whitespace-no-wrap">
-														Alonzo Cox
-													</p>
-												</div>
-											</div>
-										</td>
-										
-										<td class="px-5 py-5 bg-white text-sm">
-											<span
-												class="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-												<span aria-hidden
-													class="absolute inset-0 bg-red-200 opacity-50 rounded-full"></span>
-												<span class="relative">Inactive</span>
-											</span>
-										</td>
-									</tr>
+									
 									<tr>
 										<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 											<div class="flex items-center">

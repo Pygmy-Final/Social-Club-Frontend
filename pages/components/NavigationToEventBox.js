@@ -10,18 +10,33 @@ export default function Navigation() {
     <div>
       <div className="bg-[#E7ECEF] ">
         <div className="h-screen scale-95 rounded-md ">
-          
           {/* <Header /> */}
           <BeforeAuthHeader />
           <div className=" grid  sm:gap-x-4 sm:gap-y-2 sm:grid-cols-1 sm:m-[0.5rem] ... md:gap-x-6 md:gap-y-4 md:grid-cols-2 md:m-[0.75rem] ... lg:gap-x-2 lg:gap-y-4 lg:grid-cols-[300px_1fr_300px] lg:m-[rem]">
             <div>
               <Sidebar />
             </div>
-            <EventBox />
-            
+            <div className="inline-block flex-col overflow-auto divide-y h-[47rem] dark:divide-gray-200/5 drop-shadow ">
+              <h1 className="mt-10 mb-8 ml-4 text-[#1E2A3D] text-[24px]">
+                <b>Today’s Event</b>
+              </h1>
+              <div className="grid grid-cols-[0.9fr_550px]">
+                <EventBox />
+              </div>
+              <h1 className="mt-4 mb-8 ml-4 text-[#1E2A3D] text-[24px]">
+                <b>Upcoming Events</b>
+              </h1>
+              <div className="grid grid-cols-[450px_450px]">
+                <EventBox />
+                <EventBox />
+
+                {/* <EventBox /> */}
+              </div>
+            </div>
+
             <div>
               <Notification />
-              <QrCode />
+              {/* <QrCode /> */}
             </div>
           </div>
         </div>
