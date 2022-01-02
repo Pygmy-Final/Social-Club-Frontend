@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useEffect } from 'react';
-import ChatSideBox from './ChatSideBox';
+import ProfileSmallBox from './ProfileSmallBox';
 import $ from 'jquery';
 
 export default function Example(props) {
@@ -24,38 +24,61 @@ export default function Example(props) {
     }
 
     return (
-        open && <div id='bigBoxDiv' className="inline-block absolute top-[9.3rem] left-[36.3rem] m-auto justify-center justify-items-center overflow-hidden h-[33.5rem] w-[34.2rem] rounded-[1.5rem] bg-white z-50" style={{ display: "none" }}>
+        open && <div id='bigBoxDiv' className="inline-block absolute top-[9.1rem] left-[18.3rem] m-auto justify-center justify-items-center overflow-hidden h-[33.5rem] w-[102rem] rounded-[1.5rem] bg-white z-50" style={{ display: "none" }}>
             {/* <div className="relative"></div> */}
             <div className='p-4 bg-[#503E9D] shadow-md font-bold text-white'>
                 <h2 className='inline-block '>Category</h2>
                 <button onClick={closeHandler}
                     className='float-right inline-block  hover:stroke-white stroke-2  hover:text-[#dbd3f0]'>Return &gt;</button>
             </div>
-            <div className='overflow-auto grid grid-cols-2 gap-5 divide-y h-[90%] dark:divide-gray-200/5 p-5'>
+            <div className='overflow-auto grid grid-cols-3 gap-5 divide-y h-[90%] dark:divide-gray-200/5 p-5'>
                 {/* here we add the profile that intrest in this Category */}
               
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
+                <ProfileSmallBox />
             </div>
         </div>
     )
