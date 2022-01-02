@@ -9,12 +9,17 @@ import { useState, useRef } from "react";
 import ModalEvent from './ModalEvent'
 export default function Sidebar() {
 
-  const [showModel, setShowModel] = useState(true);
-  // const submitHandler =(e)=>{
-  //   e.preventDefault();
-  //   setShowModel(true)
-  //   console.log("Hi")
-  // }
+  const [showModel, setShowModel] = useState(false);
+  const submitHandler =(e)=>{
+    e.preventDefault();
+    setShowModel(true)
+    // console.log("Hi")
+  }
+
+  const closeHandler=()=>{
+    setShowModel(false)
+  }
+
   return (
     <div className='inline-block '>
        <div class="flex flex-wrap bg-[#E7ECEF] w-full  mt-32 md:mt-16">
@@ -173,7 +178,7 @@ export default function Sidebar() {
                       
                       <button
                         class="p-2  text-white font-semibold text-base bg-[#FB6D3A] w-[66px] h-[36] rounded-full"
-                        type="button" onClick={()=>setShowModel(true)}
+                        type="button" onClick={submitHandler}
                       >
                         start
                       </button>
@@ -210,7 +215,7 @@ export default function Sidebar() {
         </div>
       </div>
       {showModel &&
-        <ModalEvent/>
+        <ModalEvent closeHandler={closeHandler}/>
       }
     </div>
   );

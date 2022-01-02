@@ -16,7 +16,7 @@ export default function ModalEvent(props) {
     
     setTimeout(() => {
       setOpen(false);
-     
+      props.closeHandler()
     }, 1200);
   };
 

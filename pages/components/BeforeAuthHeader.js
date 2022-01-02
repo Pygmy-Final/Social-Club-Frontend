@@ -34,7 +34,7 @@ export default function Header() {
 
   let fullDate = `${day}, ${cDay} ${monthNames[cMonth]}, ${cYear}`;
 
-  setInterval(myTimer, 1000);
+  // setInterval(myTimer, 1000);
 
   function myTimer() {
     const date = new Date();
