@@ -19,8 +19,8 @@ function Chats(props) {
   };
 
   return (
-    <div className="pt-[4rem] min-h-[10rem] min-w-full rounded-[1.5rem]">
-      <div className="shadow-2xl bg-[#F8F8FB] ml-4 -mt-4 h-[45rem] min-h-full min-w-[100%] rounded-[1.5rem]">
+    <div className="pt-[4rem] min-h-[10rem] min-w-full rounded-md ">
+      <div className="shadow-2xl bg-[#F8F8FB] ml-4 -mt-4 h-[45rem] min-h-full min-w-[100%] rounded-md ">
         <div className="min-w-full min-h-full p-4">
           <div className="grid grid-cols-[300px_600px_150px]">
             <div className="pl-2 text-xl">

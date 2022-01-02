@@ -1,28 +1,28 @@
 import React from "react";
+
 import Link from "next/link";
 import Addevent from "./images/Addevent.png";
 import Image from "next/image";
 import EventBox from "./EventBox";
 import Profile from "./Profile";
 import { useState, useRef } from "react";
-import EventForm from './EventForm'
+import ModalEvent from './ModalEvent'
 export default function Sidebar() {
-  const [open, setOpen] = useState(false);
-  const [showModel, setShowModel] = useState(false);
-  const submitHandler =(e)=>{
-    e.preventDefault();
-    setOpen(true);
-    setShowModel(true)
-    console.log("Hi")
-  }
+
+  const [showModel, setShowModel] = useState(true);
+  // const submitHandler =(e)=>{
+  //   e.preventDefault();
+  //   setShowModel(true)
+  //   console.log("Hi")
+  // }
   return (
     <div className='inline-block '>
-      <div class="flex flex-wrap bg-[#E7ECEF] w-full  mt-32 md:mt-16">
+       <div class="flex flex-wrap bg-[#E7ECEF] w-full  mt-32 md:mt-16">
         <div class="w-64 bg-[#E7ECEF] rounded p-0 ">
          
           <ul class="space-y-2 text-sm">
             <li>
-              <Link href="./components/NavigationToEventBox">
+              <Link href="./NavigationToEventBox">
                 <a className="flex items-center space-x-3 text-white p-4  font-medium hover:bg[#503E9D] bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]">
                   <span class="text-white">
                     <svg
@@ -45,7 +45,7 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link href="/">
+              <Link href="./NavigateToFindMatch">
                 <a class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline">
                   <span class="text-gray-600">
                     <svg
@@ -173,7 +173,7 @@ export default function Sidebar() {
                       
                       <button
                         class="p-2  text-white font-semibold text-base bg-[#FB6D3A] w-[66px] h-[36] rounded-full"
-                        type="button" onClick={submitHandler}
+                        type="button" onClick={()=>setShowModel(true)}
                       >
                         start
                       </button>
@@ -210,7 +210,7 @@ export default function Sidebar() {
         </div>
       </div>
       {showModel &&
-        <EventForm/>
+        <ModalEvent/>
       }
     </div>
   );

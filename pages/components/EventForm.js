@@ -1,15 +1,23 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export default function EventForm() {
-  const [open, setOpen] = useState(false);
   
-  const submitHandler =()=>{
-    setOpen(true);
+  const [showModel, setShowModel] = useState(true);
+  useEffect(() => {
+
+    setShowModel(false);
+  },[]);
+
+  const submitHandler =(e)=>{
+    e.preventDefault();
+    console.log("Hi")
   }
 
   return (
+    
     <div>
+      {showModel &&
       <div class="py-12 absolute left-0 top-0 p-20 bg-red-400">
         <h2 class="text-2xl  font-bold text-[#1E2A3D]">Create Event</h2>
         <div class="mt-8 max-w-md">
@@ -132,8 +140,14 @@ export default function EventForm() {
                     <span class="ml-2 text-[#1E2A3D]">
                       Email me news and special offers{" "}
                     </span>
-                    <button
+                    <button  onClick={submitHandler}
                       class="px-6 py-2 ml-20 text-white bg-[#4CAF50] hover:bg-green-700 ... rounded-full "
+                      type="button"
+                    >
+                      Submit
+                    </button>
+                    <button  onClick={() =>setShowModel(false)}
+                      class="px-6 py-2 ml-20 text-white bg-[#000000] hover:bg-green-700 ... rounded-full "
                       type="button"
                     >
                       Submit
@@ -145,6 +159,7 @@ export default function EventForm() {
           </div>
         </div>
       </div>
+}
     </div>
   );
 }

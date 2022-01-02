@@ -38,7 +38,7 @@ function EventBox(props) {
                     <div>
                         <div className='mx-5 rounded-[1.5rem] absolute h-[4rem] w-[21rem] bg-blue-200 bg-opacity-10   bottom-[2rem]'>
 
-                        <p className='absolute mx-4 text-left text-white bottom-[0.5rem] xsm:text-[0.5rem] sm:text-[0.8rem] md:text-[0.9rem] lg:text-[1.1rem] font-semibold  '>abjd hawz 7o6e kalmon shalkl al estaz b2a monsag emon</p>
+                        <p className='absolute mx-4 text-left text-white bottom-[0.5rem] xsm:text-[0.5rem] sm:text-[0.8rem] md:text-[0.9rem] lg:text-[1.1rem] font-semibold  '>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         </div>
 
                     </div>

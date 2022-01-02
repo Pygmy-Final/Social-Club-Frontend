@@ -16,19 +16,22 @@ export default function Navigation() {
             <div>
               <Sidebar />
             </div>
-            <div className="inline-block flex-col overflow-auto divide-y h-[47rem] dark:divide-gray-200/5 drop-shadow ">
+            <div className="inline-block flex-col divide-y h-[47rem] ">
               <h1 className="mt-10 mb-8 ml-4 text-[#1E2A3D] text-[24px]">
                 <b>Today’s Event</b>
               </h1>
-              <div className="grid grid-cols-[0.9fr_550px]">
+              <div className="grid grid-cols-[1fr_620px]">
                 <EventBox />
               </div>
               <h1 className="mt-4 mb-8 ml-4 text-[#1E2A3D] text-[24px]">
                 <b>Upcoming Events</b>
               </h1>
-              <div className="grid grid-cols-[450px_450px]">
+              <div className="grid grid-cols-[450px_450px] ">
+               
                 <EventBox />
+                 
                 <EventBox />
+                 
 
                 {/* <EventBox /> */}
               </div>

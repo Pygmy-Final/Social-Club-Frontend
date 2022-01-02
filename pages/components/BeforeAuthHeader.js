@@ -66,7 +66,7 @@ export default function Header() {
     
       
       <div className=''>
-      <nav className="flex flex-wrap items-center justify-between p-2 bg-teal bg-[#F8F8FB] rounded-[16.84px]  shadow-md ...">
+      <nav className="flex flex-wrap items-center justify-between p-2 bg-teal bg-[#F8F8FB] rounded-l-[16.84px] rounded-t-[16.84px]  shadow-md ...">
         <div className="flex items-center mr-6 text-white flex-no-shrink">
           <Image
             className="w-8 h-8 mr-2"
@@ -110,7 +110,7 @@ export default function Header() {
             /> */}
             <a
               href="#"
-              class="inline-block text-sm px-4 py-2 leading-none border rounded-full text-white border-[#503E9D]  hover:text-teal hover:bg-[#503E9D] bg-[#503E9D] mt-4 ml-5 lg:mt-0"
+              class="inline-block text-sm px-4 py-2 leading-none border rounded-full text-white border-[#503E9D]  hover:text-teal hover:bg-[#503E9D] bg-[#503E9D] mt-4 mr-8 lg:mt-0"
             >
               Log in
             </a>
