@@ -4,18 +4,13 @@ import Sidebar from "./Sidebar";
 import EventBox from "./EventBox";
 import QrCode from "./QrCode";
 import Notification from "./Notification";
-import { useRouter} from 'next/router'
-import { useState } from "react";
-// import { useState } from "react";
+
+
 
 
 
 export default function Navigation() {
-  const [data,setData] = useState('')
-  const router = useRouter();
-  // let profile = JSON.parse(router.query.data)
-  // setData(profile)
-  // console.log(profile)
+
   return (
     <div>
       <div className="bg-[#E7ECEF] ">
@@ -30,15 +25,15 @@ export default function Navigation() {
               <h1 className="mt-10 mb-8 ml-4 text-[#1E2A3D] text-[24px]">
                 <b>Today’s Event</b>
               </h1>
-              <div className="grid grid-cols-[1fr_620px]">
-                <EventBox />
+              <div className="grid grid-cols-[1fr_1frpx]">
+                {/* <EventBox /> */}
               </div>
               <h1 className="mt-4 mb-8 ml-4 text-[#1E2A3D] text-[24px]">
                 <b>Upcoming Events</b>
               </h1>
               <div className="grid grid-cols-[450px_450px] ">
                
-                <EventBox />
+                {/* {/* <EventBox /> */}
                  
                 <EventBox />
                  

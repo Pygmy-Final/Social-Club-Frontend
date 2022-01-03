@@ -3,9 +3,11 @@ import Image from "next/image";
 import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from 'next/router';
+import BeforeAuthHeader from './BeforeAuthHeader'
 
 const backendUrl = "http://project-final-401.herokuapp.com";
 const tokenUrl = backendUrl + `/api/token/`;
+const refreshUrl = backendUrl +'/api/token/refresh/'
 
 export default function LoginForm() {
   const [creads, setCreads] = useState({ username: "", password: "" });
@@ -14,26 +16,28 @@ export default function LoginForm() {
   const router = useRouter()
 
   const createusername = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setCreads({ username: e.target.value });
   };
   const createuserPassword = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setCreads({ ...creads, password: e.target.value });
   };
 
-  const submitHandler = async (e, credentials) => {
+  const submitHandler = async (e, creads) => {
     e.preventDefault();
     try {
-      await axios.post(tokenUrl, credentials).then((data) => {
+      await axios.post(tokenUrl, creads).then((data) => {
         setToken(data.data.access);
         localStorage.setItem("Token",JSON.stringify(data.data.access));
+        localStorage.setItem("Creads",JSON.stringify(creads.username));
+        localStorage.setItem("Refresh",JSON.stringify(data.data.refresh));
         router.push({
             pathname: '/components/NavigationToEventBox',
            
           });
       });
-      console.log(token)
+      // console.log(token)
     //   window.location.href = "/components/NavigationToEventBox";
        
 
@@ -42,7 +46,7 @@ export default function LoginForm() {
       console.log("zdzs", err);
     }
     // console.log(credentials);
-    // console.log(token)
+    console.log(creads)
     
   };
 
@@ -103,6 +107,7 @@ export default function LoginForm() {
           </form>
         </div>
       </div>
+      {/* <creads={creads}/> */}
     </div>
   );
 }

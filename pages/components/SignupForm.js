@@ -1,6 +1,7 @@
 import React from "react";
 import { useState} from 'react'
-
+import axios from "axios";
+import { useRouter } from 'next/router';
 
 const backendUrl = "http://project-final-401.herokuapp.com";
 const signupUrl = backendUrl + `/accounts/customuser/create-user/`;
@@ -9,67 +10,157 @@ const tokenUrl = backendUrl + `/api/token/`;
 
 export default function SignupForm() {
   const [token, setToken] = useState("");
-  const [data, dataList] = useState({})
-  const credentials= ({ username: "", password: "" });
+  const [datas, dataList] = useState({})
+  const [credentials,setCredentials] = useState({ username: "", password: "" });
+  const router = useRouter()
 
-  const formHandler = async (e) => {
-    e.preventDefault();
-    let newData = {
-      firstname: e.target.firstname.value,
-      lastname: e.target.lastname.value,
-      username: e.target.username.value,
-      gender: e.target.gender.value,
-      email: e.target.email.value,
-      phone: e.target.phone.value,
-      password: e.target.password.value,
-      // intrest: e.target.intrest.value
-    }
-    
-    
-    dataList(newData)
-    console.log(data)
-  
-  }
+  const createusername = (e) => {
+    console.log(e.target.value);
+    setCredentials({ username: e.target.value });
+  };
+  const createuserPassword = (e) => {
+    console.log(e.target.value);
+    setCredentials({ ...credentials, password: e.target.value });
+  };
+  const createfirstname = (e) => {
+    console.log(e.target.value);
+    dataList({...datas,firstname: e.target.value });
+  };
+  const createlastname = (e) => {
+    console.log(e.target.value);
+    dataList({...datas,lastname: e.target.value });
+  };
+  const creategender = (e) => {
+    console.log(e.target.value);
+    dataList({...datas,gender: e.target.value });
+  };
+  const createEmail = (e) => {
+    console.log(e.target.value);
+    dataList({...datas,email: e.target.value });
+  };
+  const createPhoneNum = (e) => {
+    console.log(e.target.value);
+    dataList({...datas,phone: e.target.value });
+  };
+
   const submitHandler = async (e, data) => {
     e.preventDefault();
-    try {
+   
       await axios({
         method: 'post',
         url: signupUrl,
         data: {
-         username: data.username    ,      
-         first_name: data.firstname,
-        last_name:data.lastname,
-        email:data.email,
-        password: data.password,
-        gender:data.gender,
-        phonenumber:data.phone,
+        username: credentials.username    ,      
+        first_name: datas.firstname,
+        last_name:datas.lastname,
+        email:datas.email,
+        password: credentials.password,
+        gender:datas.gender,
+        phonenumber:datas.phone,
         // "interests"
-        }
-      }).then(axios({
-        method: 'post',
-        url: signupUrl,
-        data: {
-          username: data.username, 
-          password: data.password,
-        }
-      }).then((data) => {
-        setToken(data.data.access);
-        localStorage.setItem("Token",JSON.stringify(data.data.access));
-        router.push({
-            pathname: '/components/NavigationToEventBox',
+        }}).then(router.push({
+              pathname: '/components/LoginForm',     
+                }))
+              } 
+  console.log(credentials)
+  console.log(datas)
+
+// show success after you signup before
+
+  // const formHandler = async (e) => {
+  //   e.preventDefault();
+  //   console.log("jj")
+  //   // let newData = {
+  //   //   firstname: e.target.firstname.value,
+  //   //   lastname: e.target.lastname.value,
+  //   //   username: e.target.username.value,
+  //   //   gender: e.target.gender.value,
+  //   //   email: e.target.email.value,
+  //   //   phone: e.target.phone.value,
+  //   //   password: e.target.password.value,
+  //   //   // intrest: e.target.intrest.value
+  //   // }
+    
+    
+  //   // // await dataList(newData)
+  //   // console.log(newData.username)
+  //   // console.log(newData.password)
+  //   // setCredentials({username:newData.username,password:newData.password})
+  //   // console.log(credentials)
+
+  //   // let CreateAccount = async()=>{
+  //   //   await axios({
+  //   //     method: 'post',
+  //   //     url: signupUrl,
+  //   //     data: {
+  //   //      username: newData.username    ,      
+  //   //      first_name: newData.firstname,
+  //   //     last_name:newData.lastname,
+  //   //     email:newData.email,
+  //   //     password: newData.password,
+  //   //     gender:newData.gender,
+  //   //     phonenumber:newData.phone,
+  //   //     // "interests"
+  //   //     }
+  //   //   }).then(axios({
+  //   //     method: 'post',
+  //   //     url: signupUrl,
+  //   //     data: {
+  //   //       username: newData.username, 
+  //   //       password: newData.password,
+          
+  //   //     }
+  //   //   }).then((newData) => {
+  //   //     setToken(newData.data.access);
+  //   //     localStorage.setItem("Token",JSON.stringify(newData.data.access));
+  //   //     router.push({
+  //   //         pathname: '/components/NavigationToEventBox',
            
-          });
-        }))
-      console.log(token)
-    //   window.location.href = "/components/NavigationToEventBox";
+  //   //       });
+  //   //     }))
+  //   // }
+  
+  // }
+  // const submitHandler = async (e, data) => {
+  //   e.preventDefault();
+  //   try {
+  //     await axios({
+  //       method: 'post',
+  //       url: signupUrl,
+  //       data: {
+  //        username: data.username    ,      
+  //        first_name: data.firstname,
+  //       last_name:data.lastname,
+  //       email:data.email,
+  //       password: data.password,
+  //       gender:data.gender,
+  //       phonenumber:data.phone,
+  //       // "interests"
+  //       }
+  //     }).then(axios({
+  //       method: 'post',
+  //       url: signupUrl,
+  //       data: {
+  //         username: data.username, 
+  //         password: data.password,
+  //       }
+  //     }).then((data) => {
+  //       setToken(data.data.access);
+  //       localStorage.setItem("Token",JSON.stringify(data.data.access));
+  //       router.push({
+  //           pathname: '/components/NavigationToEventBox',
+           
+  //         });
+  //       }))
+  //     console.log(token)
+  //   //   window.location.href = "/components/NavigationToEventBox";
        
 
-    } catch (err) {
-      setError(true);
-      console.log("zdzs", err);
-    }
-  }
+  //   } catch (err) {
+  //     setError(true);
+  //     console.log("zdzs", err);
+  //   }
+  // }
   return (
     <div>
       {/* open={sign} onClose={onCloseModal} */}
@@ -82,9 +173,9 @@ export default function SignupForm() {
                 please fill in your information to continue
               </span>
             </h1>
-            <form class="mt-6" onSubmit={formHandler} method="POST">
+            <form class="mt-6" autocomplete="off" method="POST" onSubmit={submitHandler}>
               <div class="flex justify-between gap-3">
-                <span class="w-1/2">
+                 <span class="w-1/2">
                   <label
                     for="firstname"
                     class="block text-xs font-semibold text-gray-600 uppercase"
@@ -92,6 +183,7 @@ export default function SignupForm() {
                     Firstname
                   </label>
                   <input
+                  onChange={createfirstname}
                     id="firstname"
                     type="text"
                     name="firstname"
@@ -101,6 +193,7 @@ export default function SignupForm() {
                     required
                   />
                 </span>
+
                 <span class="w-1/2">
                   <label
                     for="lastname"
@@ -109,6 +202,7 @@ export default function SignupForm() {
                     Lastname
                   </label>
                   <input
+                  onChange={createlastname}
                     id="lastname"
                     type="text"
                     name="lastname"
@@ -117,7 +211,7 @@ export default function SignupForm() {
                     class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
                     required
                   />
-                </span>
+                </span> 
                 <span class="w-1/2">
                   <label
                     htmlFor="username"
@@ -126,6 +220,7 @@ export default function SignupForm() {
                     username
                   </label>
                   <input
+                  onChange={createusername}
                     id="username"
                     type="text"
                     name="username"
@@ -137,7 +232,7 @@ export default function SignupForm() {
                 </span>
                 <span>
                   <label for="gender">Gender</label>
-                  <select id="gender" name="gender">
+                  <select id="gender" name="gender" onChange={creategender}>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                   </select>
@@ -151,6 +246,7 @@ export default function SignupForm() {
                 E-mail
               </label>
               <input
+              onChange={createEmail}
                 id="email"
                 type="email"
                 name="email"
@@ -163,6 +259,7 @@ export default function SignupForm() {
               <label for="phone" class="block mt-2 text-xs font-semibold text-gray-600 uppercase">phone:</label>
 
               <input
+              onChange={createPhoneNum}
                 type="tel"
                 id="phone"
                 name="phone"
@@ -178,6 +275,7 @@ export default function SignupForm() {
                 Password
               </label>
               <input
+              onChange={createuserPassword}
                 id="password"
                 type="password"
                 name="password"
@@ -201,7 +299,7 @@ export default function SignupForm() {
                 class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
                 required
               /> */}
-               <label
+               {/* <label
                 for="Intrest"
                 name='intrest'
                 class="block mt-2 text-xs font-semibold text-gray-600 uppercase"
@@ -218,7 +316,7 @@ export default function SignupForm() {
                 <option value="Sleeping">Sleeping</option>
                 <option value="Sports">Sports</option>
                 <option value="Gaming">Gaming</option>
-              </select>
+              </select> */}
               <button
                 type="submit"
                 class="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-black shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none"

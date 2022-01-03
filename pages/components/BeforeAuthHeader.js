@@ -4,9 +4,9 @@ import React, { useState } from "react";
 import logout from "./images/logout.png";
 import { useEffect } from "react";
 
-
-export default function Header() {
+const BeforeAuthHeader=()=> {
   let currentDate = new Date();
+  const username = JSON.parse(localStorage.getItem('Creads'));
 
   const monthNames = [
     "Jan",
@@ -43,30 +43,28 @@ export default function Header() {
   }
 
   // let username = "Qamar";
-  // const greeting = () => {
-  //   let myDate = new Date();
-  //   let hrs = myDate.getHours();
+  const greeting = () => {
+    let myDate = new Date();
+    let hrs = myDate.getHours();
 
-  //   let greet;
+    let greet;
 
-  //   if (hrs < 12) greet = "Good Morning";
-  //   else if (hrs >= 12 && hrs <= 17) greet = "Good Afternoon";
-  //   else if (hrs >= 17 && hrs <= 24) greet = "Good Evening";
+    if (hrs < 12) greet = "Good Morning";
+    else if (hrs >= 12 && hrs <= 17) greet = "Good Afternoon";
+    else if (hrs >= 17 && hrs <= 24) greet = "Good Evening";
 
-  //   document.getElementById("lblGreetings").innerHTML =
-  //     greet + "<b>" + ` ${username}` + "</b>";
-  // };
-  // useEffect(() => {
-  //   greeting();
-  // });
-  
+    document.getElementById("lblGreetings").innerHTML =
+      greet + "<b>" + ` ${username}` + "</b>";
+  };
+  useEffect(() => {
+    greeting();
+  });
+
   return (
-
     // <header className=" rounded-l-[16.84px] rounded-t-[16.84px] bg-[#31317e] h-14 z-10 relative ... ">
-    
-      
-      <div className=''>
-      <nav className="flex flex-wrap items-center justify-between p-2 bg-teal bg-[#F8F8FB] rounded-l-[16.84px] rounded-t-[16.84px]  shadow-md ...">
+
+    <div className="">
+      <nav className="flex flex-wrap items-center justify-between p-2 bg-teal bg-[#F8F8FB]  rounded-[16.84px]  shadow-md ...">
         <div className="flex items-center mr-6 text-white flex-no-shrink">
           <Image
             className="w-8 h-8 mr-2"
@@ -95,37 +93,42 @@ export default function Header() {
           </div>
 
           <div>
-          {/* <a
-             id="lblGreetings" 
-              class="inline-block text-sm px-4 py-2 leading-none mr-4 text-[#1E2A3D]"
-            >
-              
-            </a>
+            <a
+              id="lblGreetings"
+              class="inline-block text-md px-0 py-2 leading-none mr-4 text-[#1E2A3D]"
+            ></a>
             <img
-              className="inline-block mr-6 rounded-full"
+              className="inline-block mr-[4rem] rounded-full"
               src="https://www.w3schools.com/howto/img_avatar.png"
               width={30}
               height={30}
               alt="Avatar"
-            /> */}
-            <a
-              href="#"
-              class="inline-block text-sm px-4 py-2 leading-none border rounded-full text-white border-[#503E9D]  hover:text-teal hover:bg-[#503E9D] bg-[#503E9D] mt-4 mr-8 lg:mt-0"
-            >
-              Log in
-            </a>
-            {/* <Image
-              className="hover:m-10"
-              src={logout}
-              width={21.6}
-              height={18.36}
-            /> */}
+            />
+          {/* <button></button> */}
+              <svg
+               
+              class="inline-block  h-7 text-[#1E2A3D] rounded- mt-4 mr-14 lg:mt-0"
+                
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                />
+              </svg>
+            
           </div>
         </div>
       </nav>
-      </div>
-      
+    </div>
 
     /* // </header> */
   );
 }
+
+export default BeforeAuthHeader
