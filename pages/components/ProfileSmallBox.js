@@ -11,9 +11,14 @@ function ChatSideBox(props) {
             </div>
             {/* <span className='absolute border-solid border-[0.1rem] border-neutral-400 ...  top-10 left-10 h-[7px] w-[7px] bg-green-500 grid   rounded-full content-center ...'>
             </span> */}
-            <p className='h-8 text-xs font-semibold m-auto  -ml-3  content-center inline-block truncate text-[#0d1724]  antialiased ...'>Abdallah Bassam
-            </p>
+            <p className='h-[4rem] text-xs m-auto  ml-8  content-center inline-block truncate text-[#1E2A3D] text-[15px] font-extrabold  ...'>Abdallah  Bassam
+            <br/>
+            <br/>
 
+            <p className='mt-2 truncate font-normal ...' style={{maxWidth:'280px',wordWrap:'break-word'}}>Bio: losfkln;asdljkfnjosfkln;asdljkfnjsdblnvds;aklsdwpefdjk</p>
+            
+            </p>
+            
         </div>
     )
 }

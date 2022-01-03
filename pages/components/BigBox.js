@@ -24,7 +24,7 @@ export default function Example(props) {
     }
 
     return (
-        open && <div id='bigBoxDiv' className="inline-block absolute top-[9.1rem] left-[18.3rem] m-auto justify-center justify-items-center overflow-hidden h-[33.5rem] w-[102rem] rounded-[1.5rem] bg-white z-50" style={{ display: "none" }}>
+        open && <div id='bigBoxDiv' className="inline-block absolute top-[9.1rem] left-[18.3rem] m-auto justify-center justify-items-center overflow-hidden h-[33.5rem] w-[88rem] rounded-[1.5rem] bg-white z-50" style={{ display: "none" }}>
             {/* <div className="relative"></div> */}
             <div className='p-4 bg-[#503E9D] shadow-md font-bold text-white'>
                 <h2 className='inline-block '>Category</h2>

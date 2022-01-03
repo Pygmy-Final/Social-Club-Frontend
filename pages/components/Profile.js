@@ -3,15 +3,27 @@ import Image from "next/image";
 import sport from "./images/sport.jpg";
 import sport2 from "./images/sport2.jpg";
 import Vector from "./images/Vector.png";
-
 import avatar from "./images/avatar.png";
 import follow from "./images/follow.png";
-
 import Stars from "./Stars.js";
+import EditProfile from "./EditProfile.js";
 
+
+import {useState} from "react"
 function Profile(props) {
+  const [open,setOpen] = useState(false)
+  
+  const openHandler=()=>{
+   
+    setOpen(true);
+
+  }
+  const closeHandler=()=>{
+    setShowModel(false)
+  }
+
   return (
-    <div className="inline-block flex-col overflow-auto divide-y  h-[40rem] dark:divide-gray-200/5 ">
+    <div className="inline-block flex-col overflow-auto divide-y  h-[46rem] dark:divide-gray-200/5 ">
       <div className="relative inline-block">
         <div className="">
           <div className="h-[20rem]   ... ">
@@ -43,13 +55,13 @@ function Profile(props) {
         </h3>
         <span>
 
-{/*         
-        <button className="inline-block text-sm px-6 py-2 leading-none border rounded-[5px] text-white border-[#503E9D]  hover:text-teal hover:bg-[#312663] bg-[#503E9D] mt-4 ml-[50.5rem] lg:mt-0">
+        
+        <button onClick={openHandler} className="inline-block text-sm px-6 py-2 leading-none border rounded-[5px] text-white border-[#503E9D]  hover:text-teal hover:bg-[#312663] bg-[#503E9D] mt-4 ml-[50.5rem] lg:mt-0">
           <Image src={Vector} className=""/>
          <span> Edit Profile</span>
-        </button> */}
+        </button>
         {/* If Another user */}
-        <div className='inline-block ml-[43.5rem]'>
+        {/* <div className='inline-block ml-[43.5rem]'>
 
         <button className="text-sm px-6 py-2 leading-none mr-5 border rounded-[5px] text-white border-[#503E9D]  hover:text-teal hover:bg-[#312663] bg-[#503E9D] mb-4 lg:mt-0">
           <Image src={follow} className=""/>
@@ -59,7 +71,7 @@ function Profile(props) {
           <Image src={follow} className=""/>
          <span>Follow</span>
         </button>
-        </div>
+        </div> */}
         
         </span>
         <div class="">
@@ -90,6 +102,9 @@ function Profile(props) {
           </div>
         </div>
       </div>
+      {setOpen &&
+        <EditProfile closeHandler={closeHandler}/>
+      }
     </div>
   );
 }

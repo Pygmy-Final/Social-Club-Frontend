@@ -1,10 +1,31 @@
 import React from "react";
+import {useState,useEffect} from "react"
+import $ from "jquery";
 
-export default function EditProfile() {
+export default function EditProfile(props) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    $("#bigBoxDiv").fadeIn(1000);
+  });
+
+  const closeHandler = async () => {
+    $("#bigBoxDiv").fadeToggle(1000);
+    $("#fademodal").fadeToggle(1000);
+    
+    setTimeout(() => {
+      setOpen(false);
+      props.closeHandler()
+    }, 1200);
+  };
   return (
+    open && (
+      <div id="fademodal">
+        <div  className="absolute top-0 left-0 z-30 w-screen h-screen bg-gray-200 opacity-75"></div>
     <div>
       <div className="mb-5 md:col-span-1">
               <div className="px-4 sm:px-0">
+              <button onClick={closeHandler}>X</button>
                 <h3 className="text-lg font-medium leading-6 text-gray-900">
                   Profile
                 </h3>
@@ -278,5 +299,7 @@ export default function EditProfile() {
         </div>
       </div>
     </div>
-  );
+    </div>
+    )
+  )
 }

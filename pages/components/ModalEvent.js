@@ -152,7 +152,7 @@ export default function ModalEvent(props) {
                         <span class="ml-2 text-[#1E2A3D]">
                           Email me news and special offers{" "}
                         </span>
-                        <div className='grid inline-block grid-cols-2 gap-12'>
+                        <div className='grid grid-cols-2 gap-12'>
 
 
                         <button onClick={closeHandler}
