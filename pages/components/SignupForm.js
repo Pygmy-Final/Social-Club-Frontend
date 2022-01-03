@@ -1,74 +1,56 @@
 import React from "react";
-import { useState} from 'react'
-
+import { useState } from 'react'
+import axios from "axios";
+import SuccessSignUp from './SuccessSignUp'
+import { useRouter } from 'next/router';
+import LoginForm from './LoginForm'
+import Link from "next/link";
+import $ from 'jquery';
+import { useEffect } from "react";
 
 const backendUrl = "http://project-final-401.herokuapp.com";
 const signupUrl = backendUrl + `/accounts/customuser/create-user/`;
-
 const tokenUrl = backendUrl + `/api/token/`;
 
 export default function SignupForm() {
   const [token, setToken] = useState("");
   const [data, dataList] = useState({})
-  const credentials= ({ username: "", password: "" });
+  const [creads, setCreads] = useState({ username: "", password: "" })
+  const [showSuccess, setshowSuccess] = useState(false)
+  const [error, setError] = useState(false);
+  const router = useRouter()
 
-  const formHandler = async (e) => {
+  function createAccountHan(e) {
+
     e.preventDefault();
-    let newData = {
-      firstname: e.target.firstname.value,
-      lastname: e.target.lastname.value,
+    let userAccount = {
+      first_name: e.target.firstname.value,
+      last_name: e.target.lastname.value,
       username: e.target.username.value,
       gender: e.target.gender.value,
       email: e.target.email.value,
-      phone: e.target.phone.value,
+      phonenumber: e.target.phone.value,
       password: e.target.password.value,
-      // intrest: e.target.intrest.value
+      interests: $('#select-intrest').val()
     }
-    
-    
-    dataList(newData)
-    console.log(data)
-  
-  }
-  const submitHandler = async (e, data) => {
-    e.preventDefault();
-    try {
-      await axios({
-        method: 'post',
-        url: signupUrl,
-        data: {
-         username: data.username    ,      
-         first_name: data.firstname,
-        last_name:data.lastname,
-        email:data.email,
-        password: data.password,
-        gender:data.gender,
-        phonenumber:data.phone,
-        // "interests"
-        }
-      }).then(axios({
-        method: 'post',
-        url: signupUrl,
-        data: {
-          username: data.username, 
-          password: data.password,
-        }
-      }).then((data) => {
-        setToken(data.data.access);
-        localStorage.setItem("Token",JSON.stringify(data.data.access));
-        router.push({
-            pathname: '/components/NavigationToEventBox',
-           
-          });
-        }))
-      console.log(token)
-    //   window.location.href = "/components/NavigationToEventBox";
-       
 
-    } catch (err) {
-      setError(true);
-      console.log("zdzs", err);
+    async function addAccountApi() {
+      console.log('user acc ', userAccount)
+      await axios.post(signupUrl, userAccount)
+      setcreadets(userAccount)
     }
+
+    function setcreadets(user) {
+      console.log('userdata ', user)
+      setshowSuccess(true)
+      localStorage.setItem("Username", JSON.stringify(user.username));
+      setTimeout(() => {
+        router.push({
+          pathname: '/components/LoginForm',         
+        });
+      }, 2000);
+    }
+    addAccountApi()
   }
   return (
     <div>
@@ -82,7 +64,7 @@ export default function SignupForm() {
                 please fill in your information to continue
               </span>
             </h1>
-            <form class="mt-6" onSubmit={formHandler} method="POST">
+            <form class="mt-6" onSubmit={createAccountHan} method="POST">
               <div class="flex justify-between gap-3">
                 <span class="w-1/2">
                   <label
@@ -168,7 +150,7 @@ export default function SignupForm() {
                 name="phone"
                 placeholder="79000000"
                 class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
-                // pattern="[0-9]{3}[0-9]{2}[0-9]{3}"
+              // pattern="[0-9]{3}[0-9]{2}[0-9]{3}"
               />
 
               <label
@@ -201,14 +183,14 @@ export default function SignupForm() {
                 class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner"
                 required
               /> */}
-               <label
+              <label
                 for="Intrest"
                 name='intrest'
                 class="block mt-2 text-xs font-semibold text-gray-600 uppercase"
               >
                 Intrest
               </label>
-              <select class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" width={300} style={{ width: "350px" }} size="8" multiple>
+              <select name='intrest' id='select-intrest' class="block w-full p-3 mt-2 text-gray-700 bg-gray-200 appearance-none focus:outline-none focus:bg-gray-300 focus:shadow-inner" width={300} style={{ width: "350px" }} size="8" multiple>
                 <option value="Reading">Reading</option>
                 <option value="Cycling">Cycling</option>
                 <option value="Hiking">Hiking</option>
@@ -225,13 +207,21 @@ export default function SignupForm() {
               >
                 Sign up
               </button>
-              <p class="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">
-                Already registered?
-              </p>
+              <Link href='/components/LoginForm'>
+                <p class="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">
+                  Already registered?
+                </p>
+              </Link>
+              {error && (
+                <div>
+                  <p className="text-red-700">*Error in creads</p>
+                </div>
+              )}
             </form>
           </div>
         </div>
       </div>
+      {showSuccess && <SuccessSignUp />}
     </div>
   );
 }

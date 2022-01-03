@@ -3,6 +3,9 @@ import Image from "next/image";
 import axios from "axios";
 import React, { useState } from "react";
 import { useRouter } from 'next/router';
+import { useEffect } from "react";
+import Link from "next/link";
+import { useContext } from "react";
 
 const backendUrl = "http://project-final-401.herokuapp.com";
 const tokenUrl = backendUrl + `/api/token/`;
@@ -11,6 +14,7 @@ export default function LoginForm() {
   const [creads, setCreads] = useState({ username: "", password: "" });
   const [token, setToken] = useState("");
   const [error, setError] = useState(false);
+  const [signupstate, setSignupState] = useState(null)
   const router = useRouter()
 
   const createusername = (e) => {
@@ -24,28 +28,32 @@ export default function LoginForm() {
 
   const submitHandler = async (e, credentials) => {
     e.preventDefault();
+
     try {
-      await axios.post(tokenUrl, credentials).then((data) => {
+        await axios.post(tokenUrl, credentials).then((data) => {
         setToken(data.data.access);
-        localStorage.setItem("Token",JSON.stringify(data.data.access));
+        localStorage.setItem("Token", JSON.stringify(data.data.access));
         router.push({
-            pathname: '/components/NavigationToEventBox',
-           
-          });
+          pathname: '/components/NavigationToEventBox',
+
+        });
       });
       console.log(token)
-    //   window.location.href = "/components/NavigationToEventBox";
-       
-
     } catch (err) {
       setError(true);
-      console.log("zdzs", err);
+      console.log("post request error ", err);
     }
-    // console.log(credentials);
-    // console.log(token)
-    
-  };
 
+  };
+  useEffect(() => {
+    const username = JSON.parse(localStorage.getItem('Username'))
+    if (username != null) {
+      // document.getElementById("username").defaultValue = username;
+      setSignupState(username)
+      setCreads({ username: username });
+      localStorage.removeItem('Username')
+    }
+  })
   return (
     <div>
       <div class=" min-h-screen bg-slate-200 py-6 flex flex-col justify-center relative overflow-hidden sm:py-12">
@@ -59,9 +67,17 @@ export default function LoginForm() {
             method="post"
           >
             <label htmlFor="username" class="block">
-              Username{" "}
+              Username
             </label>
-            <input
+            {signupstate ? <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="User Name"
+              class="border w-full h-10 px-3 mb-5 rounded-md"
+              placeholder="Username"
+              value={signupstate}
+            /> : <input
               type="text"
               name="username"
               id="username"
@@ -69,7 +85,7 @@ export default function LoginForm() {
               class="border w-full h-10 px-3 mb-5 rounded-md"
               placeholder="Username"
               onChange={createusername}
-            />
+            />}
 
             <label htmlFor="password" class="block">
               Password
@@ -89,10 +105,11 @@ export default function LoginForm() {
                   <p className="text-red-700">*Error in creads</p>
                 </div>
               )}
-
-              <button class="text-sm text-blue-700 hover:underline ml-auto dark:text-blue-500">
-                I dont have an account{" "}
-              </button>
+              <Link href='/components/SignupForm'>
+                <button class="text-sm text-blue-700 hover:underline ml-auto dark:text-blue-500">
+                  I dont have an account
+                </button>
+              </Link>
             </div>
             <button class="mt-5 bg-green-500 hover:bg-blue-700 shadow-xl text-white uppercase text-sm font-semibold px-14 py-3 rounded">
               Login
