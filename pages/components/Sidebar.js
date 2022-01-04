@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useRouter } from 'next/router';
 import Link from "next/link";
 import Addevent from "./images/Addevent.png";
 import Image from "next/image";
@@ -15,11 +15,13 @@ export default function Sidebar() {
     setShowModel(true)
     // console.log("Hi")
   }
+  
 
   const closeHandler=()=>{
     setShowModel(false)
   }
-
+  const { asPath } = useRouter()
+ 
   return (
     <div className='inline-block '>
        <div class="flex flex-wrap bg-[#E7ECEF] w-full  mt-32 md:mt-16">
@@ -28,8 +30,8 @@ export default function Sidebar() {
           <ul class="space-y-2 text-sm">
             <li>
               <Link href="./NavigationToEventBox">
-                <a className="flex items-center space-x-3 text-white p-4  font-medium hover:bg[#503E9D] bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]">
-                  <span class="text-white">
+                <a className={'http://localhost:3000' + asPath === 'http://localhost:3000/components/NavigationToEventBox'? "flex items-center space-x-3 text-white p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]": "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"}>
+                  <span class={'http://localhost:3000' + asPath === 'http://localhost:3000/components/NavigationToEventBox'?"text-white":"text-gray-600"}>
                     <svg
                       class="h-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -51,8 +53,8 @@ export default function Sidebar() {
             </li>
             <li>
               <Link href="./NavigateToFindMatch">
-                <a class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline">
-                  <span class="text-gray-600">
+                <a className={'http://localhost:3000' + asPath === 'http://localhost:3000/components/NavigateToFindMatch'? "flex items-center space-x-3 text-white p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]": "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"}>
+                  <span class={'http://localhost:3000' + asPath === 'http://localhost:3000/components/NavigateToFindMatch'?"text-white":"text-gray-600"}>
                     <svg
                       class="h-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -74,8 +76,8 @@ export default function Sidebar() {
             </li>
             <li>
               <Link href="./NavigateToChats">
-                <a class="flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-[##503E9D] focus:shadow-outline">
-                  <span class="text-gray-600">
+                <a className={'http://localhost:3000' + asPath === 'http://localhost:3000/components/NavigateToChats' ? "flex items-center space-x-3 text-white p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]": "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"}>
+                  <span class={'http://localhost:3000' + asPath === 'http://localhost:3000/components/NavigateToChats'?"text-white":"text-gray-600"}>
                     <svg
                       class="h-5"
                       xmlns="http://www.w3.org/2000/svg"
@@ -97,8 +99,8 @@ export default function Sidebar() {
             </li>
             <li>
               <Link href="./NavigationToFollowers">
-                <a class="flex items-center space-x-3 text-gray-600 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-[##503E9D] focus:shadow-outline">
-                  <span class="text-gray-600">
+                <a className={'http://localhost:3000' + asPath === 'http://localhost:3000/components/NavigationToFollowers' ? "flex items-center space-x-3 text-white p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]": "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"}>
+                  <span class={'http://localhost:3000' + asPath === 'http://localhost:3000/components/NavigationToFollowers'?"text-white":"text-gray-600"}>
                   <svg 
                    class="h-6"
                    xmlns="http://www.w3.org/2000/svg"
@@ -116,10 +118,9 @@ export default function Sidebar() {
             <li>
               <Link href="./NavigationToProfile">
                 <a
-                  
-                  class="flex items-center space-x-3 text-gray-600 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"
+                 className={'http://localhost:3000' + asPath ==='http://localhost:3000/components/NavigationToProfile' ? "flex items-center space-x-3 text-white p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]": "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"}
                 >
-                  <span class="text-gray-600 ">
+                  <span class={'http://localhost:3000' + asPath === 'http://localhost:3000/components/NavigationToProfile'?"text-white":"text-gray-600"}>
                     <svg
                       class="h-5"
                       xmlns="http://www.w3.org/2000/svg"

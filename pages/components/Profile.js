@@ -7,19 +7,20 @@ import avatar from "./images/avatar.png";
 import follow from "./images/follow.png";
 import Stars from "./Stars.js";
 import EditProfile from "./EditProfile.js";
+import Link from "next/link";
 
 
 import {useState} from "react"
 function Profile(props) {
   const [open,setOpen] = useState(false)
   
-  const openHandler=()=>{
-   
+  const openHandler=(e)=>{
+    e.preventDefault();
     setOpen(true);
 
   }
   const closeHandler=()=>{
-    setShowModel(false)
+    setOpen(false)
   }
 
   return (
@@ -60,6 +61,7 @@ function Profile(props) {
           <Image src={Vector} className=""/>
          <span> Edit Profile</span>
         </button>
+        
         {/* If Another user */}
         {/* <div className='inline-block ml-[43.5rem]'>
 
@@ -102,7 +104,7 @@ function Profile(props) {
           </div>
         </div>
       </div>
-      {setOpen &&
+      {open &&
         <EditProfile closeHandler={closeHandler}/>
       }
     </div>

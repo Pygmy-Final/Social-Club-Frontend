@@ -31,7 +31,22 @@ export default function ModalEvent(props) {
         >
           <div class="py-12 absolute left-0 top-0 p-20 bg-[#F8F8FB] rounded-md  ">
             <h2 class="text-2xl  font-bold text-[#1E2A3D]">Create Event</h2>
-            <button onClick={closeHandler}>X</button>
+            <button className="float-right -mr-7 -mt-7" onClick={closeHandler}>
+            <span class="text-black">
+                    <svg
+                      class="h-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                            class="close-x" d="M 10,10 L 30,30 M 30,10 L 1,28" 
+                       />
+                    </svg>
+                  </span>
+              
+            </button>
             <div class="mt-8 max-w-md">
               <div class="grid grid-cols-1 gap-6">
                 <label class="block">
@@ -43,7 +58,7 @@ export default function ModalEvent(props) {
                     block
                     w-full
                     rounded-md
-                    bg-gray-100
+                    bg-gray-300
                     border-transparent
                     focus:border-gray-500 focus:bg-white focus:ring-0
                   "
@@ -59,7 +74,7 @@ export default function ModalEvent(props) {
                     block
                     w-full
                     rounded-md
-                    bg-gray-100
+                    bg-gray-300
                     border-transparent
                     focus:border-gray-500 focus:bg-white focus:ring-0
                   "
@@ -75,7 +90,7 @@ export default function ModalEvent(props) {
                     block
                     w-full
                     rounded-md
-                    bg-gray-100
+                    bg-gray-300
                     border-transparent
                     focus:border-gray-500 focus:bg-white focus:ring-0
                   "
@@ -93,7 +108,7 @@ export default function ModalEvent(props) {
                     block
                     w-full
                     rounded-md
-                    bg-gray-100
+                    bg-gray-300
                     border-transparent
                     focus:border-gray-500 focus:bg-white focus:ring-0
                   "
@@ -108,15 +123,20 @@ export default function ModalEvent(props) {
                     mt-1
                     text-[#1E2A3D]
                     rounded-md
-                    bg-gray-100
+                    bg-gray-300
                     border-transparent
                     focus:border-gray-500 focus:bg-white focus:ring-0
                   "
                   >
-                    <option>Corporate event</option>
-                    <option>Wedding</option>
-                    <option>Birthday</option>
-                    <option>Other</option>
+                <option>Reading</option>
+                <option>Cycling</option>
+                <option>Hiking</option>
+                <option>Drawing</option>
+                <option>Photography</option>
+                <option>Swimming</option>
+                <option>Sleeping</option>
+                <option>Sports</option>
+                <option>Gaming</option>
                   </select>
                 </label>
                 <label class="block">
@@ -127,7 +147,7 @@ export default function ModalEvent(props) {
                     block
                     w-full
                     rounded-md
-                    bg-gray-100
+                    bg-gray-300
                     border-transparent
                     focus:border-gray-500 focus:bg-white focus:ring-0
                   "
@@ -142,7 +162,7 @@ export default function ModalEvent(props) {
                           type="checkbox"
                           class="
                           rounded
-                          bg-gray-200
+                          bg-gray-300
                           border-transparent
                           focus:border-transparent focus:bg-gray-200
                           text-gray-700
@@ -156,7 +176,7 @@ export default function ModalEvent(props) {
 
 
                         <button onClick={closeHandler}
-                          class="px-10 py-2 m-auto  text-white bg-[#e95e34] hover:bg-green-700 ... rounded-full "
+                          class="px-10 py-2 m-auto text-white bg-red-400 hover:bg-red-700 ... rounded-full "
                           type="button"
                         >
                           Cancel
