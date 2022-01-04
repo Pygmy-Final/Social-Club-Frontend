@@ -19,11 +19,11 @@ export default function Example(props) {
             <div id='bigBoxDiv' className="inline-block absolute top-[9.1rem]  left-[40.6rem] m-auto   overflow-hidden h-[25rem] w-[25rem] rounded-[1.5rem] bg-[#F7F7F7] z-50 " style={{ display: "none" }}>
             {/* <div className="relative"></div> */}
             <div className='p-4 bg-[#503E9D] shadow-md font-bold text-white'>
-                <h2 className='inline-block '>Sign-up Successfully</h2>
+                <h2 className='inline-block '>{props.word} Successfully</h2>
                 {/* <button onClick={closeHandler}
                     className='float-right inline-block  hover:stroke-white stroke-2  hover:text-[#dbd3f0]'>Return &gt;</button> */}
             </div>
-            <p className='mx-12'>you will be directed to Login Page 😊</p>
+            <p className='mx-12'>{props.successMessage} 😊</p>
             <div className='grid grid-rows-2 gap-5 h-[100%]  p-10'>
                 
                 {/* here we add the profile that intrest in this Category */}

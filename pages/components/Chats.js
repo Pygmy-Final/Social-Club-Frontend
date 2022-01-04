@@ -4,19 +4,100 @@ import ChatSideBox from "./ChatSideBox";
 import ChatMe from "./ChatMe";
 import ChatHim from "./ChatHim";
 import ChatSideProfile from "./ChatSideProfile";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import chat from "./images/chat.png";
 import ChatActive from "./ChatActive";
+import axios from "axios";
+import inbox from './images/inbox.png'
+
+const backendUrl = "http://project-final-401.herokuapp.com";
+const messageUrl = backendUrl + `/chat/message/`;
+const token = JSON.parse(localStorage.getItem('Token'))
+const myUserName = JSON.parse(localStorage.getItem('Username'))
+
 function Chats(props) {
+  const [userMsg, setUserMsg] = useState([])
+  const [messagesPerPersonState, setMessagesPerPersonState] = useState()
+  const [renderMsg, setRenderMsg] = useState(false)
+  const [namesOfRec, setNamesOfRec] = useState([])
+
   useEffect(() => {
     // this to scroll down the chat box so the latest msgs show up once the user open the msg
     // 🛑 this should re-run on-click on another chat later on
+    getUserMessageData()
     let elem = document.getElementById("chatBox");
     elem.scrollTop = elem.scrollHeight;
-  });
-  let fun = () => {
-    console.log("HI");
+  }, []);
+
+  let getUserMessageData = async () => {
+
+    const config = { headers: { Authorization: "Bearer " + token } };
+    const api = axios.create({ baseURL: 'https://project-final-401.herokuapp.com' })
+    api.get('/chat/message/', config)
+      .then(res => {
+        // console.log(res)
+        let messagesPerPerson = {}
+        res.data.map((i) => {
+          if (myUserName != i.sender.username) {
+            let ImNotSender = {
+              "sender": true,
+              "first_name": `${i.sender.first_name} ${i.sender.last_name}`,
+              "gender": `${i.sender.gender}`,
+              "phonenumber": `${i.sender.phonenumber}`,
+              "interests": `${i.sender.interests}`,
+              "profilePicture": `${i.sender.profilePicture}`,
+              "email": `${i.sender.email}`,
+              "message": `${i.message}`,
+              "date_created": `${i.date_created}`,
+            }
+            if (messagesPerPerson[i.sender.username] == undefined) {
+              messagesPerPerson[i.sender.username] = [ImNotSender]
+            } else {
+              messagesPerPerson[i.sender.username].push(ImNotSender)
+            }
+          } else {
+            let ImNotReceiver = {
+              "sender": false,
+              "first_name": `${i.receiver.first_name} ${i.sender.last_name}`,
+              "gender": `${i.receiver.gender}`,
+              "phonenumber": `${i.receiver.phonenumber}`,
+              "interests": `${i.receiver.interests}`,
+              "profilePicture": `${i.receiver.profilePicture}`,
+              "email": `${i.receiver.email}`,
+              "message": `${i.message}`,
+              "date_created": `${i.date_created}`,
+            }
+            if (messagesPerPerson[i.receiver.username] == undefined) {
+              messagesPerPerson[i.receiver.username] = [ImNotReceiver]
+            } else {
+              messagesPerPerson[i.receiver.username].push(ImNotReceiver)
+            }
+          }
+        })
+        setMessagesPerPersonState(messagesPerPerson)
+        renderMessages()
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
   };
+  function logMe() {
+    console.log(messagesPerPersonState)
+  }
+
+  const renderMessages = () => {
+    setTimeout(() => {
+      for (let name in messagesPerPersonState) {
+        setNamesOfRec([...namesOfRec, name])
+        console.log(namesOfRec)
+      }
+      setTimeout(() => {
+        setRenderMsg(true)
+      }, 500)
+    }, 2000);
+    
+  }
 
   return (
     <div className="pt-[4rem] min-h-[10rem] min-w-full rounded-md ">
@@ -28,6 +109,7 @@ function Chats(props) {
                 <Image src={chat} width={30} height={30} />
                 Chats
               </div>
+              <button onClick={logMe}>state</button>
 
               <div class="flex items-center bg-gray-50 mb-2 rounded-md border-2 border-[#d6ccc8] w-70 ">
                 <svg
@@ -52,6 +134,9 @@ function Chats(props) {
               </div>
 
               <div className="flex flex-col w-auto overflow-auto bg-gray-200 divide-y rounded-md shadow-inner h-[35rem] dark:divide-gray-200/5 ">
+                {renderMsg ? <></> : <ChatSideBox recImg={inbox} recName='No Messages Yet' />}
+
+                {/* <ChatSideBox />
                 <ChatSideBox />
                 <ChatSideBox />
                 <ChatSideBox />
@@ -61,9 +146,7 @@ function Chats(props) {
                 <ChatSideBox />
                 <ChatSideBox />
                 <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
-                <ChatSideBox />
+                <ChatSideBox /> */}
               </div>
             </div>
             <div>
@@ -95,7 +178,7 @@ function Chats(props) {
                   style={{ overflow: "auto", resize: "none" }}
                   required
                 ></textarea>
-                <button onClick={fun} className="mr-5 hover:bg-black">
+                <button className="mr-5 hover:bg-black">
                   <svg
                     class="inline-block justify-center my-auto "
                     width="25px"

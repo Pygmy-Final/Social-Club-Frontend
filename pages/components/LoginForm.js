@@ -14,12 +14,14 @@ export default function LoginForm() {
   const [creads, setCreads] = useState({ username: "", password: "" });
   const [token, setToken] = useState("");
   const [error, setError] = useState(false);
+  const [userName, setUserName]=useState('')
   const [signupstate, setSignupState] = useState(null)
   const router = useRouter()
 
   const createusername = (e) => {
     console.log(e.target.value);
     setCreads({ username: e.target.value });
+    setUserName(e.target.value)
   };
   const createuserPassword = (e) => {
     console.log(e.target.value);
@@ -28,10 +30,12 @@ export default function LoginForm() {
 
   const submitHandler = async (e, credentials) => {
     e.preventDefault();
+    
 
     try {
         await axios.post(tokenUrl, credentials).then((data) => {
         setToken(data.data.access);
+        localStorage.setItem("Username", JSON.stringify(userName))
         localStorage.setItem("Token", JSON.stringify(data.data.access));
         router.push({
           pathname: '/components/NavigationToEventBox',
@@ -51,9 +55,18 @@ export default function LoginForm() {
       // document.getElementById("username").defaultValue = username;
       setSignupState(username)
       setCreads({ username: username });
-      localStorage.removeItem('Username')
+      // localStorage.removeItem('Username')
     }
-  })
+  }, [])
+  // useEffect(() => {
+  //   const username = JSON.parse(localStorage.getItem('Username'))
+  //   if (username != null) {
+  //     // document.getElementById("username").defaultValue = username;
+  //     setSignupState(username)
+  //     setCreads({ username: username });
+  //     // localStorage.removeItem('Username')
+  //   }
+  // })
   return (
     <div>
       <div class=" min-h-screen bg-slate-200 py-6 flex flex-col justify-center relative overflow-hidden sm:py-12">

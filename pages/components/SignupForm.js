@@ -221,7 +221,7 @@ export default function SignupForm() {
           </div>
         </div>
       </div>
-      {showSuccess && <SuccessSignUp />}
+      {showSuccess && <SuccessSignUp successMessage='you will be directed to Login Page' word ='Sign up'/>}
     </div>
   );
 }
