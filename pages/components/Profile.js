@@ -10,13 +10,33 @@ import EditProfile from "./EditProfile.js";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const username = JSON.parse(localStorage.getItem("Creads"));
-const backendUrl = "http://project-final-401.herokuapp.com";
-const profileUrl = backendUrl + `/accounts/customuser/user/?search=${username}`;
-const eventUrl = backendUrl + `/events/event/`;
-
-
 function Profile(props) {
+  const [profileurl, setProfileUrl] = useState("");
+  const [eventurl, setEventUrl] = useState("");
+  const [profileData, setProfileData] = useState([]);
+  const [refreshurl, setRefreshUrl] = useState("");
+  const [tokendb, setTokendb] = useState("");
+  const [refreshdb, setRefreshdb] = useState("");
+
+  // const token = JSON.parse(localStorage.getItem("Token"));
+  // const refresh = JSON.parse(localStorage.getItem("Refresh"));
+
+  const allData = () => {
+    const username = JSON.parse(localStorage.getItem("Creads"));
+    const backendUrl = "http://project-final-401.herokuapp.com";
+    const profileUrl =
+      backendUrl + `/accounts/customuser/user/?search=${username}`;
+    setProfileUrl(profileUrl);
+    const eventUrl = backendUrl + `/events/event/`;
+    setEventUrl(eventUrl);
+    const refreshUrl = backendUrl + "/api/token/refresh/";
+    setRefreshUrl[refreshUrl];
+    const token = JSON.parse(localStorage.getItem("Token"));
+    setTokendb(token);
+    const refresh = JSON.parse(localStorage.getItem("Refresh"));
+    setRefreshdb(refresh);
+  };
+
   const [open, setOpen] = useState(false);
   const openHandler = () => {
     setOpen(true);
@@ -24,34 +44,42 @@ function Profile(props) {
   const closeHandler = () => {
     setShowModel(false);
   };
-  const [profileData, setProfileData] = useState([]);
 
-
-
-  const token = JSON.parse(localStorage.getItem("Token"));
   // console.log(token);
 
-  useEffect(async () => {
-    const config = { headers: { Authorization: "Bearer " + token } };
-    await axios.get(profileUrl, config).then((data) => {
-      setProfileData(data.data);
-    });
-  });
+  useEffect(() => {
+    allData();
+    profile();
+    events();
+  }, []);
+
+  const profile = async () => {
+    const config = { headers: { Authorization: "Bearer " + tokendb } };
+    try {
+      await axios.get(profileurl, config).then((data) => {
+        setProfileData(data.data);
+      });
+    } catch (error) {
+      await axios.get(refreshurl, config).then((data) => {
+        console.log(data.data)
+        localStorage.setItem('Token',JSON.stringify(data.data))
+        
+      });
+    }
+  };
   // console.log(profileData);
   const [event, setEvent] = useState([]);
 
   // console.log(token);
 
-  useEffect(async () => {
+  const events = async () => {
     const config = { headers: { Authorization: "Bearer " + token } };
-    await axios.get(eventUrl, config).then((data) => {
+    await axios.get(eventurl, config).then((data) => {
       setEvent(data.data);
     });
-  });
+  };
   // console.log(event);
 
- 
-  
   return (
     <>
       {profileData.map((value) => {
@@ -125,31 +153,25 @@ function Profile(props) {
                 </div>
                 <div className="mt-5">
                   <b className="text-[#15263a]"> My Events</b>
-                  <br/>
+                  <br />
                   {event.map((event) => {
                     if (event.EventCreator == value.id) {
                       return (
                         <>
-                          
-                          <br/>
+                          <br />
 
                           <b className="text-[#15263a]"> {event.EventName}</b>
                           <div class="p-6 bg-white border-b opacity-80 rounded border-gray-200 mt-4 w-[59rem]">
-                            
                             About Event :{event.EventDescription}
-                            <br/>
+                            <br />
                             EventLocation: {event.EventLocation}
-                            <br/>
-
+                            <br />
                             Event Type: {event.EventCategory}
-
-
                           </div>
                         </>
                       );
                     }
                   })}
-                  
                 </div>
               </div>
             </div>

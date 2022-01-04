@@ -52,6 +52,8 @@ export default function ModalEvent(props) {
         EventLocation: datas.eventlocation,
         EventCategory: datas.category,
         EventStartTime: datas.eventdate,
+        EventCreator:1,
+        EventParticipants:2,
     }}, 
     { headers: { Authorization: "Bearer " + token }});
 

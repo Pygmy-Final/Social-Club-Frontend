@@ -3,10 +3,19 @@ import Image from "next/image";
 import React, { useState } from "react";
 import logout from "./images/logout.png";
 import { useEffect } from "react";
+import Link from "next/link";
 
-const BeforeAuthHeader=()=> {
+const BeforeAuthHeader = () => {
+  const [urname, setUserName] = useState("");
   let currentDate = new Date();
-  const username = JSON.parse(localStorage.getItem('Creads'));
+  const isNone = () => {
+    if (localStorage.getItem("Creads") == null) {
+      // JSON.stringify(localStorage.setItem(''));
+      console.log("Empty");
+    }
+    let username = JSON.parse(localStorage.getItem("Creads"));
+    setUserName(username);
+  };
 
   const monthNames = [
     "Jan",
@@ -34,7 +43,7 @@ const BeforeAuthHeader=()=> {
 
   let fullDate = `${day}, ${cDay} ${monthNames[cMonth]}, ${cYear}`;
 
-  // setInterval(myTimer, 1000);
+  setInterval(myTimer, 1000);
 
   function myTimer() {
     const date = new Date();
@@ -54,10 +63,11 @@ const BeforeAuthHeader=()=> {
     else if (hrs >= 17 && hrs <= 24) greet = "Good Evening";
 
     document.getElementById("lblGreetings").innerHTML =
-      greet + "<b>" + ` ${username}` + "</b>";
+      greet + "<b>" + ` ${urname}` + "</b>";
   };
   useEffect(() => {
     greeting();
+    isNone();
   });
 
   return (
@@ -83,11 +93,11 @@ const BeforeAuthHeader=()=> {
           <div className="text-sm lg:flex-grow">
             <a
               id="demo"
-              className="block mt-4 text-[#516F91] lg:inline-block lg:mt-0 text-teal-lighter hover:text-[#503E9D] mr-4"
+              className="block mt-4 text-[#516F91] lg:inline-block text-base lg:mt-0 text-teal-lighter hover:text-[#503E9D] mr-4"
             >
               {myTimer}
             </a>
-            <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter text-[#516F91] hover:text-[#503E9D] mr-4">
+            <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter text-[#516F91] text-base hover:text-[#503E9D] mr-4">
               {fullDate}
             </a>
           </div>
@@ -95,33 +105,33 @@ const BeforeAuthHeader=()=> {
           <div>
             <a
               id="lblGreetings"
-              class="inline-block text-md px-0 py-2 leading-none mr-4 text-[#1E2A3D]"
+              className="inline-block text-md px-0 py-2 leading-none mr-4 text-[#1E2A3D]"
             ></a>
             <img
-              className="inline-block mr-[4rem] rounded-full"
+              className="inline-block mr-[2rem] rounded-full"
               src="https://www.w3schools.com/howto/img_avatar.png"
               width={30}
               height={30}
               alt="Avatar"
             />
-          {/* <button></button> */}
-              <svg
-               
-              class="inline-block  h-7 text-[#1E2A3D] rounded- mt-4 mr-14 lg:mt-0"
-                
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                />
-              </svg>
+            <Link href="/components/LoginForm">
+             
+                <svg
+                  class="inline-block cursor-pointer h-7 text-[#1E2A3D] mr-16 lg:mt-0"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+                  />
+                </svg>
             
+            </Link>
           </div>
         </div>
       </nav>
@@ -129,6 +139,6 @@ const BeforeAuthHeader=()=> {
 
     /* // </header> */
   );
-}
+};
 
-export default BeforeAuthHeader
+export default BeforeAuthHeader;
