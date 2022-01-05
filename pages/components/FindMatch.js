@@ -14,7 +14,7 @@ function FindMatch(props) {
     const [showBox, setshowBox] = useState(false)
     const [isDataLoaded, setisDataLoaded] = useState(false)
     const [filteredLists, setfilteredLists] = useState(null)
-    const [userInterests, setuserInterests] = useState(['Cycling'])
+    const [userInterests, setuserInterests] = useState(['Cycling', 'Reading', 'Sports'])
     const [followers, setfollowers] = useState({})
     useEffect(() => {
 
@@ -66,7 +66,6 @@ function FindMatch(props) {
         setTimeout(() => {
             setshowBox(true)
         }, 1200);
-
     }
 
     function bigBoxData(data) {
