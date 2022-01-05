@@ -4,6 +4,8 @@ import Sidebar from "./Sidebar";
 import FindMatch from "./FindMatch";
 
 import Chats from "./Chats";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Navigation() {
   return (
