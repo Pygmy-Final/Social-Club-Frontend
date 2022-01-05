@@ -18,7 +18,7 @@ export default function SuccessMessage() {
             />
           </svg>
           <p class="ml-3 text-sm font-bold text-green-600">
-            Successfully Sent !
+            Successfully Changed !
           </p>
         </div>
         <span class="inline-flex items-center cursor-pointer">

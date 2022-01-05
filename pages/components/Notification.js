@@ -8,15 +8,10 @@ export default function Notification() {
       <div class="p-4 w-80 ">
         <div class="p-8 bg-white rounded-[16.84px] shadow-md">
           <h2 class="text-xl font-bold text-[#274C77] mb-5">Notification</h2>
-          <div>
-            <Image src={green} />ss
+          <div class="text-[#274C77]">
+            <Image src={green} /> Notification Will be Added soon!
           </div>
-          <div>
-            <Image src={green} />
-          </div>
-          <div>
-            <Image src={green} />
-          </div>
+          
         </div>
       </div>
     </div>

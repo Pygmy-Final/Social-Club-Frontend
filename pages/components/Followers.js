@@ -7,7 +7,7 @@ export default function Followers() {
  
   const [tokendb, setTokendb] = useState("");
   const [userFollower, setUserFollower] = useState([]);
-
+  const [UserID,SetUserID]= useState("");
 
 
   const allData = () => {
@@ -36,11 +36,13 @@ export default function Followers() {
       )
       .then((data) => {
         setUserFollower(data.data);
-        
+        SetUserID(data.data[0].from_user.id);
+
+        localStorage.setItem("MyID", JSON.stringify(UserID));
       });
+
   };
 
-  
   followData();
 
   

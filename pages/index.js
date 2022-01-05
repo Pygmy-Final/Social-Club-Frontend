@@ -1,16 +1,7 @@
 import Head from "next/head";
-import BeforeAuthHeader from "./components/BeforeAuthHeader";
-import HomePage from "./components/HomePage";
-import Sidebar from "./components/Sidebar";
-import Profile from "./components/Profile";
-import Chats from "./components/Chats";
-import Followers from "./components/Followers";
-import FindMatch from "./components/FindMatch";
-import { useState } from "react";
-import EventBox from "./components/EventBox";
 
-import Notification from "./components/Notification";
-import QrCode from "./components/QrCode";
+import HomePage from "./components/HomePage";
+
 
 export default function index() {
   

@@ -1,6 +1,18 @@
 import React from "react";
 import Image from "next/image";
-import dance from "./images/dance.png";
+import sport from "./images/sport.jpg";
+import draw from "./images/draw.jpg";
+import cycling from "./images/cycling.jpg";
+import gaming from "./images/gaming.jpg";
+import hiking from "./images/hiking.jpg";
+import photography from "./images/photography.jpg";
+import read from "./images/read.jpg";
+import sleep from "./images/sleep.jpg";
+import swimming from "./images/swimming.jpg";
+
+
+
+
 import glassy from "./images/glassy.png";
 import avatar from "./images/avatar.png";
 import axios from "axios";
@@ -21,6 +33,9 @@ const EventBox = () => {
   const [event, setEvent] = useState("");
   const [eventList, setEventList] = useState([]);
   const [tokendb, setTokendb] = useState("");
+  const [userId, setUserId] = useState("");
+
+  
 
   const allData = () => {
     const username = JSON.parse(localStorage.getItem("Creads"));
@@ -44,7 +59,7 @@ const EventBox = () => {
       .get("http://project-final-401.herokuapp.com/events/event/", config)
       .then((data) => {
         setEventList(data.data);
-        // console.log("data", data.data);
+        console.log("data", data.data);
       });
   };
 
@@ -62,11 +77,69 @@ const EventBox = () => {
               <div className="transition  delay-50 duration-2000 ease-in-out   inline-block hover:drop-shadow-[0.3rem_0.3rem_0.3rem_rgba(0,0,0,0.25)]">
                 <div className="relative inline-block  rounded-[3rem]">
                   <div className="inline-block drop-shadow-[0_0.9rem_0.3rem_rgba(0,0,0,0.25)]">
-                    <Image
-                      className="absolute inline-block  rounded-[3rem] "
-                      src={dance}
-                      alt="Dance picture"
-                    />
+                    {value.EventCategory == "Drawing" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={draw}
+                        alt="Dance picture"
+                      />
+                    )}
+                    {value.EventCategory == "Sleeping" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={sleep}
+                        alt="Dance picture"
+                      />
+                    )}
+                    {value.EventCategory == "Reading" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={read}
+                        alt="Dance picture"
+                      />
+                    )}
+                    {value.EventCategory == "Cycling" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={cycling}
+                        alt="Dance picture"
+                      />
+                    )}
+                    {value.EventCategory == "Hiking" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={hiking}
+                        alt="Dance picture"
+                      />
+                    )}
+                    {value.EventCategory == "Photography" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={photography}
+                        alt="Dance picture"
+                      />
+                    )}
+                    {value.EventCategory == "Swimming" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={swimming}
+                        alt="Dance picture"
+                      />
+                    )}
+                    {value.EventCategory == "Sports" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={sports}
+                        alt="Dance picture"
+                      />
+                    )}
+                    {value.EventCategory == "Gaming" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={gaming}
+                        alt="Dance picture"
+                      />
+                    )}
                   </div>
                   <div className="absolute inline-block top-0 left-0  rounded-[3rem]">
                     <Image
@@ -116,13 +189,71 @@ const EventBox = () => {
             <div>
               <div className="transition  delay-50 duration-2000 ease-in-out xsm:mb-4 xsm:mx-4 md:mx-3 lg:mx-2  inline-block hover:drop-shadow-[0.3rem_0.3rem_0.3rem_rgba(0,0,0,0.25)] space-x-40">
                 <div className="relative inline-block  rounded-[3rem]">
-                  <div className="inline-block drop-shadow-[0_0.9rem_0.3rem_rgba(0,0,0,0.25)]">
-                    <Image
-                      className="absolute inline-block  rounded-[3rem] "
-                      src={dance}
-                      alt="Dance picture"
-                    />
-                  </div>
+                  <div className="inline-block h-10  drop-shadow-[0_0.9rem_0.3rem_rgba(0,0,0,0.25)]">
+                  {value.EventCategory == "Drawing" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={draw}
+                        alt="draw picture"
+                      />
+                    )}
+                    {value.EventCategory == "Sleeping" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={sleep}
+                        alt="sleep picture"
+                      />
+                    )}
+                    {value.EventCategory == "Reading" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={read}
+                        alt="read picture"
+                      />
+                    )}
+                    {value.EventCategory == "Cycling" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={cycling}
+                        alt="cycling"
+                      />
+                    )}
+                    {value.EventCategory == "Hiking" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={hiking}
+                        alt="Hiking"
+                      />
+                    )}
+                    {value.EventCategory == "Photography" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={photography}
+                        alt="Photography"
+                      />
+                    )}
+                    {value.EventCategory == "Swimming" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={swimming}
+                        alt="swimming"
+                      />
+                    )}
+                    {value.EventCategory == "Sports" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={sport}
+                        alt=""
+                      />
+                    )}
+                    {value.EventCategory == "Gaming" && (
+                      <Image
+                        className="absolute inline-block  rounded-[3rem] "
+                        src={gaming}
+                        alt=""
+                      />
+                    )}
+                    </div>
                   <div className="absolute inline-block top-0 left-0  rounded-[3rem]">
                     <Image
                       className="inline-block rounded-[3rem]"
@@ -152,7 +283,8 @@ const EventBox = () => {
                       <div className="mx-5 rounded-[1.5rem] absolute h-[4rem] w-[21rem] bg-blue-200 bg-opacity-10   bottom-[2rem]">
                         <p className="absolute mx-4 text-left text-white bottom-[0.5rem] xsm:text-[0.5rem] sm:text-[0.8rem] md:text-[0.9rem] lg:text-[1.1rem] font-semibold  ">
                           {value.EventDescription}
-                        </p>&nbsp;&nbsp;
+                        </p>
+                        &nbsp;&nbsp;
                       </div>
                     </div>
                   </div>

@@ -53,9 +53,7 @@ export default function HomePage() {
               class="text-gray-700 mb-8 text-left text-[27px] ml-20"
               style={{ maxWidth: "600px" }}
             >
-              It is a long established fact that a reader will be distracted by
-              the readable content of a page when looking at its layout. The
-              point of using Lorem Ipsum is that....
+              Where People meet Up
             </p>
             <div class="flex justify-between">
               <span class="font-thin text-sm visible ...">
