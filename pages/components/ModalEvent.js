@@ -3,13 +3,15 @@ import { useEffect } from "react";
 import ChatSideBox from "./ChatSideBox";
 import $ from "jquery";
 import axios from "axios";
+import SuccessSignUp from './SuccessSignUp'
 
 const backendUrl = "http://project-final-401.herokuapp.com";
-const createEventUrl = backendUrl + "/events/event/";
-
+const createEventUrl = backendUrl + "/events/event/create/";
 export default function ModalEvent(props) {
   const token = JSON.parse(localStorage.getItem("Token"));
   const [datas, dataList] = useState({});
+  const [showSuccess, setshowSuccess] = useState(false)
+  
   console.log(token)
   const [open, setOpen] = useState(true);
   useEffect(() => {
@@ -25,71 +27,51 @@ export default function ModalEvent(props) {
   };
   const createEventName = (e) => {
     console.log(e.target.value);
-    dataList({ ...datas, eventname: e.target.value });
+    dataList({ ...datas, EventName: e.target.value });
   };
   const createEventLocation = (e) => {
     console.log(e.target.value);
-    dataList({ ...datas, eventlocation: e.target.value });
+    dataList({ ...datas, EventLocation: e.target.value });
   };
   const createEventdate = (e) => {
     console.log(e.target.value);
-    dataList({ ...datas, eventdate: e.target.value });
+    dataList({ ...datas, EventStartTime: (e.target.value) });
   };
   const createEventCategory = (e) => {
     console.log(e.target.value);
-    dataList({ ...datas, category: e.target.value });
+    dataList({ ...datas, EventCategory: e.target.value });
   };
   const createEventDetails = (e) => {
     console.log(e.target.value);
-    dataList({ ...datas, eventdetails: e.target.value });
+    dataList({ ...datas, EventDescription: e.target.value });
   };
   const submitHandler = async (e, data) => {
     e.preventDefault();
     const config = { headers: { Authorization: "Bearer " + token } };
-    await axios.post(createEventUrl, {data:{
-      EventName: datas.eventname,
-        EventDescription: datas.eventdetails,
-        EventLocation: datas.eventlocation,
-        EventCategory: datas.category,
-        EventStartTime: datas.eventdate,
-        EventCreator:1,
-        EventParticipants:2,
-    }}, 
-    { headers: { Authorization: "Bearer " + token }});
-
-    // await axios({
-    //   method: 'post',
-    //   url: createEventUrl,
-    //   headers: { Authorization: "Bearer " + token },
-      
-    //     // EventName: datas.eventname,
-    //     // EventDescription: datas.eventdetails,
-    //     // EventLocation: datas.eventlocation,
-    //     // EventCategory: datas.category,
-    //     // EventStartTime: datas.eventdate,
-    //      EventName: datas.eventname,
-    //     EventDescription: datas.eventdetails,
-    //     EventLocation: datas.eventlocation,
-    //     EventCategory: datas.category,
-    //     EventStartTime: datas.eventdate,
-    //   // "interests"
-    //   })
-    // const datae = {
-    //   EventName: datas.eventname,
-    //   EventDescription: datas.eventdetails,
-    //   EventLocation: datas.eventlocation,
-    //   EventCategory: datas.category,
-    //   EventStartTime: datas.eventdate,
-    // };
-    // await axios.post(createEventUrl, config);
+    const api = axios.create({ baseURL: 'https://project-final-401.herokuapp.com' })
+    api.post('/events/event/create/', {
+      EventName: datas.EventName,
+      EventDescription: datas.EventDescription,
+      EventLocation: datas.EventLocation,
+      EventCategory: datas.EventCategory,
+      EventStartTime: datas.EventStartTime,
+      EventCreator:"8"
+    }, config)
+      .then(res => {
+        console.log(res)
+        setshowSuccess(true)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  
   };
-  console.log("59",token)
-
+  console.log("59", token)
   console.log("datas ", datas);
-
   return (
     open && (
       <div id="fademodal">
+        {showSuccess && <SuccessSignUp successMessage='Event Created Successfully' word='Event' />}
         <div className="absolute top-0 left-0 z-30 w-screen h-screen bg-gray-200 opacity-75"></div>
         <div
           id="bigBoxDiv"
@@ -153,6 +135,8 @@ export default function ModalEvent(props) {
                     onChange={createEventdate}
                     name="eventdate"
                     type="datetime-local"
+                    step="1"
+                    // value="2013-10-24T20:36:00"
                     class="
                     mt-1
                     text-[#1E2A3D]
@@ -237,6 +221,7 @@ export default function ModalEvent(props) {
             </div>
           </div>
         </div>
+        
       </div>
     )
   );

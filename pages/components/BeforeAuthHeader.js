@@ -7,6 +7,8 @@ import Link from "next/link";
 
 const BeforeAuthHeader = () => {
   const [urname, setUserName] = useState("");
+  const [time, setTime] = useState("");
+
   let currentDate = new Date();
   const isNone = () => {
     if (localStorage.getItem("Creads") == null) {
@@ -43,14 +45,11 @@ const BeforeAuthHeader = () => {
 
   let fullDate = `${day}, ${cDay} ${monthNames[cMonth]}, ${cYear}`;
 
-  setInterval(myTimer, 1000);
-
   function myTimer() {
     const date = new Date();
-    // return date.toLocaleTimeString();
-    document.getElementById("demo").innerHTML = date.toLocaleTimeString();
+    setTime(date.toLocaleTimeString());
   }
-
+  setInterval(myTimer, 1000);
   // let username = "Qamar";
   const greeting = () => {
     let myDate = new Date();
@@ -67,6 +66,7 @@ const BeforeAuthHeader = () => {
   };
   useEffect(() => {
     greeting();
+    myTimer()
     isNone();
   });
 
@@ -92,10 +92,10 @@ const BeforeAuthHeader = () => {
         <div className="flex-grow block w-full lg:flex lg:items-center lg:w-auto">
           <div className="text-sm lg:flex-grow">
             <a
-              id="demo"
+              
               className="block mt-4 text-[#516F91] lg:inline-block text-base lg:mt-0 text-teal-lighter hover:text-[#503E9D] mr-4"
             >
-              {myTimer}
+              {time}
             </a>
             <a className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter text-[#516F91] text-base hover:text-[#503E9D] mr-4">
               {fullDate}

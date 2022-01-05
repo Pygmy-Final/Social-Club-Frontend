@@ -18,11 +18,8 @@ function Profile(props) {
   const [tokendb, setTokendb] = useState("");
   const [refreshdb, setRefreshdb] = useState("");
 
-  // const token = JSON.parse(localStorage.getItem("Token"));
-  // const refresh = JSON.parse(localStorage.getItem("Refresh"));
-
   const allData = () => {
-    const username = JSON.parse(localStorage.getItem("Creads"));
+    const username = JSON.parse(localStorage.getItem("Username"));
     const backendUrl = "http://project-final-401.herokuapp.com";
     const profileUrl =
       backendUrl + `/accounts/customuser/user/?search=${username}`;
@@ -50,40 +47,54 @@ function Profile(props) {
   useEffect(() => {
     allData();
     profile();
-    events();
+    
+    // events();
   }, []);
-
   const profile = async () => {
     const config = { headers: { Authorization: "Bearer " + tokendb } };
-    try {
-      await axios.get(profileurl, config).then((data) => {
+
+    await axios
+      .get(
+        profileurl,
+        config
+      )
+      .then((data) => {
         setProfileData(data.data);
-      });
-    } catch (error) {
-      await axios.get(refreshurl, config).then((data) => {
-        console.log(data.data)
-        localStorage.setItem('Token',JSON.stringify(data.data))
         
       });
-    }
   };
-  // console.log(profileData);
-  const [event, setEvent] = useState([]);
+  // const profile = async () => {
+  //   const config = { headers: { Authorization: "Bearer " + tokendb } };
+  //   try {
+  //     await axios.get(profileurl, config).then((data) => {
+  //       setProfileData(data.data);
+  //     });
+  //   } catch (error) {
+  //     await axios.get(refreshurl, config).then((data) => {
+  //       console.log(data.data)
+  //       localStorage.setItem('Token',JSON.stringify(data.data))
+        
+  //     });
+  //   }
+  // };
+  profile()
+  // console.log('profileData',profileData);
+  // const [event, setEvent] = useState([]);
 
-  // console.log(token);
+  // // console.log(token);
 
-  const events = async () => {
-    const config = { headers: { Authorization: "Bearer " + token } };
-    await axios.get(eventurl, config).then((data) => {
-      setEvent(data.data);
-    });
-  };
+  // const events = async () => {
+  //   const config = { headers: { Authorization: "Bearer " + token } };
+  //   await axios.get(eventurl, config).then((data) => {
+  //     setEvent(data.data);
+  //   });
+  // };
   // console.log(event);
 
   return (
     <>
-      {profileData.map((value) => {
-        return (
+      {/* {profileData.map((value) => {
+         return ( */}
           <div className="inline-block flex-col overflow-auto divide-y  h-[46rem] dark:divide-gray-200/5 ">
             <div className="relative inline-block">
               <div className="">
@@ -109,32 +120,21 @@ function Profile(props) {
                 className="absolute font-bold xsm:top-[5rem] xsm:left-[6rem] sm:top-[6.6rem] md:top-[8rem] lg:top-[11rem] sm:left-[6rem] md:left-[8rem] lg:left-[10rem] xsm:text-[0.8rem] sm:text-[0.9rem] md:text-[1rem] lg:text-[1.1rem]
  text-white mt-14 ..."
               >
-                {value.first_name}
-                {value.last_name}
+                {/* {value.first_name}
+                {value.last_name} */}
               </h3>
               <h3 className="absolute xsm:top-[6rem] xsm:left-[6rem] sm:top-[7.7rem] sm:left-[6.5rem] md:top-[9.5rem] md:left-[8.5rem]  lg:top-[13rem] lg:left-[10.5rem] mt-14 -ml-2">
                 <Stars />
               </h3>
               <span>
                 <button
-                  onClick={openHandler}
+                  // onClick={openHandler}
                   className="inline-block text-sm px-6 py-2 leading-none border rounded-[5px] text-white border-[#503E9D]  hover:text-teal hover:bg-[#312663] bg-[#503E9D] mt-4 ml-[50.5rem] lg:mt-0"
                 >
                   <Image src={Vector} className="" />
                   <span> Edit Profile</span>
                 </button>
-                {/* If Another user */}
-                {/* <div className='inline-block ml-[43.5rem]'>
-
-        <button className="text-sm px-6 py-2 leading-none mr-5 border rounded-[5px] text-white border-[#503E9D]  hover:text-teal hover:bg-[#312663] bg-[#503E9D] mb-4 lg:mt-0">
-          <Image src={follow} className=""/>
-         <span>Message</span>
-        </button>
-        <button className="text-sm px-6 py-2 leading-none  border rounded-[5px] text-white border-[#503E9D]  hover:text-teal hover:bg-[#312663] bg-[#503E9D] mt-4 lg:mt-0">
-          <Image src={follow} className=""/>
-         <span>Follow</span>
-        </button>
-        </div> */}
+              
               </span>
               <div class="">
                 <div class="overflow-hidden ">
@@ -147,14 +147,20 @@ function Profile(props) {
                 </div> */}
                 </div>
                 <div className="mt-5">
-                  <b className="text-[#15263a]"> Interest In</b>
+                  <b className="text-[#15263a] text-lg"> Interest In</b>
                   <br />
-                  {value.interests}
+                 
+                  {/* {value.interests.map((val)=>{
+                    return(
+                      // - {val}, 
+                      <li className='text-[#182a3d]'>- {val}</li>
+                    )
+                  })} */}
                 </div>
                 <div className="mt-5">
-                  <b className="text-[#15263a]"> My Events</b>
+                  <b className="text-[#15263a] text-lg"> My Events</b>
                   <br />
-                  {event.map((event) => {
+                  {/* {event.map((event) => {
                     if (event.EventCreator == value.id) {
                       return (
                         <>
@@ -171,14 +177,14 @@ function Profile(props) {
                         </>
                       );
                     }
-                  })}
+                  })} */}
                 </div>
               </div>
             </div>
-            {setOpen && <EditProfile closeHandler={closeHandler} />}
+            {/* {setOpen && <EditProfile closeHandler={closeHandler} />} */}
           </div>
-        );
-      })}
+      {/* //    ); 
+      //  })} */}
     </>
   );
 }

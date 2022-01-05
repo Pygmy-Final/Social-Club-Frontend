@@ -1,11 +1,12 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import lustration from "./images/Illustrations.png";
 import logo from "./images/logo.png";
 
 export default function HomePage() {
+
+
   return (
     <div className="h-[47rem] mb-10 bg-[#e7ecef] overflow-hidden border-2 drop-shadow rounded-[3rem]  ">
       <div class="py-12 md:px-0 sm:px-14 px-6  ...">
