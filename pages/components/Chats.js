@@ -151,7 +151,7 @@ function Chats(props) {
   }
 
   if (isLoading) {
-    return <div  className="flex h-10 w-10 h-max w-max  p-[5rem] m-auto drop-shadow-2xl"><div className=" inline-block m-auto pt-[4rem] h-max w-max rounded-full "><div className="inline-block rounded-full relative m-auto"><Image className="animate-ping rounded-full " height={500} width={700} src={spining}/></div></div></div>;
+    return <div  className="flex h-10 w-10 h-max w-max  p-[5rem] m-auto drop-shadow-2xl"><div className=" inline-block m-auto pt-[4rem] h-max w-max rounded-full "><div className="inline-block rounded-full relative m-auto"><Image className="animate-ping rounded-full hover:animate-bounce" height={500} width={700} src={spining}/></div></div></div>;
   }
   return (
     <div className="pt-[4rem] min-h-[10rem] min-w-full rounded-md ">
