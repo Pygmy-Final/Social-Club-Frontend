@@ -82,15 +82,16 @@ export default function LoginForm() {
             <label htmlFor="username" class="block">
               Username
             </label>
-            {signupstate ? <input
+            {/* {signupstate ? <input
               type="text"
               name="username"
               id="username"
               placeholder="User Name"
               class="border w-full h-10 px-3 mb-5 rounded-md"
               placeholder="Username"
-              value={signupstate}
-            /> : <input
+              // value={signupstate}
+            /> :  */}
+            <input
               type="text"
               name="username"
               id="username"
@@ -98,7 +99,7 @@ export default function LoginForm() {
               class="border w-full h-10 px-3 mb-5 rounded-md"
               placeholder="Username"
               onChange={createusername}
-            />}
+            />
 
             <label htmlFor="password" class="block">
               Password

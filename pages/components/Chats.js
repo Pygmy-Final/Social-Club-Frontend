@@ -20,6 +20,7 @@ function Chats(props) {
   const [messagesPerPersonState, setMessagesPerPersonState] = useState()
   const [renderMsg, setRenderMsg] = useState(false)
   const [namesOfRec, setNamesOfRec] = useState([])
+  const [startRender, setStartRender] = useState(false)
 
   useEffect(() => {
     // this to scroll down the chat box so the latest msgs show up once the user open the msg
@@ -35,7 +36,6 @@ function Chats(props) {
     const api = axios.create({ baseURL: 'https://project-final-401.herokuapp.com' })
     api.get('/chat/message/', config)
       .then(res => {
-        // console.log(res)
         let messagesPerPerson = {}
         res.data.map((i) => {
           if (myUserName != i.sender.username) {
@@ -75,6 +75,7 @@ function Chats(props) {
           }
         })
         setMessagesPerPersonState(messagesPerPerson)
+
         renderMessages()
       })
       .catch(error => {
@@ -84,19 +85,32 @@ function Chats(props) {
   };
   function logMe() {
     console.log(messagesPerPersonState)
+
   }
 
   const renderMessages = () => {
-    setTimeout(() => {
-      for (let name in messagesPerPersonState) {
-        setNamesOfRec([...namesOfRec, name])
-        console.log(namesOfRec)
-      }
-      setTimeout(() => {
-        setRenderMsg(true)
-      }, 500)
-    }, 2000);
-    
+
+    let names = []
+
+    for (let name in messagesPerPersonState) {
+      names.push(name)
+      console.log(name);
+    }
+
+    console.log(names);
+    setNamesOfRec(names)
+
+    console.log(namesOfRec)
+
+    setRenderMsg(true)
+    setStartRender(true)
+
+
+  }
+
+  function filterMessages(res) {
+
+    renderMessages()
   }
 
   return (
@@ -109,7 +123,7 @@ function Chats(props) {
                 <Image src={chat} width={30} height={30} />
                 Chats
               </div>
-              <button onClick={logMe}>state</button>
+              {startRender && <button onClick={logMe}>state</button>}
 
               <div class="flex items-center bg-gray-50 mb-2 rounded-md border-2 border-[#d6ccc8] w-70 ">
                 <svg
@@ -134,7 +148,22 @@ function Chats(props) {
               </div>
 
               <div className="flex flex-col w-auto overflow-auto bg-gray-200 divide-y rounded-md shadow-inner h-[35rem] dark:divide-gray-200/5 ">
-                {renderMsg ? <></> : <ChatSideBox recImg={inbox} recName='No Messages Yet' />}
+                {renderMsg ?
+                  [0].map((i) => {
+                    let listofnames = []
+                    for (let j in messagesPerPersonState) {
+                      listofnames.push(j)
+                    }
+
+                    for (let x = 0; x < listofnames.length; x++) {
+                      console.log(x);
+                      let info = messagesPerPersonState[listofnames[x]]
+                      return (<ChatSideBox recName="jana" recImg={chat}/>)
+                      
+                    }
+
+                  })
+                  : <ChatSideBox recImg={inbox} recName='No Messages Yet' />}
 
                 {/* <ChatSideBox />
                 <ChatSideBox />
