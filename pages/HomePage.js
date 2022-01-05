@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import lustration from "./images/Illustrations.png";
-import logo from "./images/logo.png";
+import lustration from "../components/images/Illustrations.png";
+import logo from "../components/images/logo.png";
 
 export default function HomePage() {
 
@@ -58,7 +58,7 @@ export default function HomePage() {
             <div class="flex justify-between">
               <span class="font-thin text-sm visible ...">
                 {" "}
-                <Link href='./components/SignupForm'>
+                <Link href='/SignupForm'>
                 <button
                   class=" mr-4 ml-[25rem] text-[20px] text-white hover:text-black p-4 px-7 bg-gradient-to-r rounded-md from-[#514B9B] to-blue-500 hover:from-pink-500 hover:to-yellow-500 ..."
                   type="button"
@@ -66,7 +66,7 @@ export default function HomePage() {
                   Sign up
                 </button>
                 </Link>
-                <Link href='./components/LoginForm'>
+                <Link href='/LoginForm'>
                 <button
 
                   class=" text-[20px] text-white hover:text-black p-4 px-7 bg-gradient-to-r rounded-md from-[#514B9B] to-blue-500 hover:from-pink-500 hover:to-yellow-500 ..."

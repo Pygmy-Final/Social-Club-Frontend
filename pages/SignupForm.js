@@ -1,13 +1,13 @@
 import React from "react";
 import { useState,useEffect } from 'react'
 import axios from "axios";
-import SuccessSignUp from './SuccessSignUp'
+import SuccessSignUp from '../components/SuccessSignUp'
 import { useRouter } from 'next/router';
 import LoginForm from './LoginForm'
 import Link from "next/link";
 import $ from 'jquery';
 import Image from "next/image";
-import signup from './images/signup.png'
+import signup from '../components/images/signup.png'
 
 const backendUrl = "http://project-final-401.herokuapp.com";
 const signupUrl = backendUrl + `/accounts/customuser/create-user/`;
@@ -44,7 +44,7 @@ export default function SignupForm() {
       localStorage.setItem("Username", JSON.stringify(user.username));
       setTimeout(() => {
         router.push({
-          pathname: '/components/LoginForm',         
+          pathname: '/LoginForm',         
         });
       }, 2000);
     }

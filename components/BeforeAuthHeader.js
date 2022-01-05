@@ -114,7 +114,7 @@ const BeforeAuthHeader = () => {
               height={30}
               alt="Avatar"
             />
-            <Link href="/components/LoginForm">
+            <Link href="/LoginForm">
              
                 <svg
                   class="inline-block cursor-pointer h-7 text-[#1E2A3D] mr-16 lg:mt-0"

@@ -1,9 +1,9 @@
 import React from "react";
-import BeforeAuthHeader from "./BeforeAuthHeader";
+import BeforeAuthHeader from "../components/BeforeAuthHeader";
 import Sidebar from "./Sidebar";
-import FindMatch from "./FindMatch";
+import FindMatch from "../components/FindMatch";
 
-import Chats from "./Chats";
+
 
 export default function Navigation() {
   return (

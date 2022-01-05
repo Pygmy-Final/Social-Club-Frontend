@@ -4,7 +4,7 @@ import Image from "next/image";
 import axios from "axios";
 import React, { useState,useEffect } from "react";
 import { useRouter } from "next/router";
-import signImage from "./images/signImage.png";
+import signImage from "../components/images/signImage.png";
 
 const backendUrl = "http://project-final-401.herokuapp.com";
 const tokenUrl = backendUrl + `/api/token/`;
@@ -36,7 +36,7 @@ export default function LoginForm() {
         localStorage.setItem("Creads", JSON.stringify(creads.username));
         localStorage.setItem("Refresh", JSON.stringify(data.data.refresh));
         router.push({
-          pathname: "/components/NavigationToEventBox",
+          pathname: "/NavigationToEventBox",
         });
       });
       console.log(token);

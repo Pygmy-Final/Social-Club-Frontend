@@ -1,12 +1,12 @@
 import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Addevent from "./images/Addevent.png";
+import Addevent from "../components/images/Addevent.png";
 import Image from "next/image";
-import EventBox from "./EventBox";
-import Profile from "./Profile";
+import ModalEvent from "../components/ModalEvent";
+
+
 import { useState, useRef } from "react";
-import ModalEvent from "./ModalEvent";
 export default function Sidebar() {
   const [showModel, setShowModel] = useState(false);
   const submitHandler = (e) => {
@@ -26,7 +26,7 @@ export default function Sidebar() {
         <div class="w-64 bg-[#E7ECEF] rounded p-0 ">
           <ul class="space-y-2 text-sm">
             <li>
-              <Link href="./NavigationToEventBox">
+              <Link href="/NavigationToEventBox">
                 <a
                   className={
                     "http://localhost:3000" + asPath ===
@@ -63,7 +63,7 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link href="./NavigateToFindMatch">
+              <Link href="/NavigateToFindMatch">
                 <a
                   className={
                     "http://localhost:3000" + asPath ===
@@ -103,7 +103,7 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link href="./NavigateToChats">
+              <Link href="/NavigateToChats">
                 <a
                   className={
                     "http://localhost:3000" + asPath ===
@@ -140,7 +140,7 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link href="./NavigationToFollowers">
+              <Link href="/NavigationToFollowers">
                 <a
                   className={
                     "http://localhost:3000" + asPath ===
@@ -172,7 +172,7 @@ export default function Sidebar() {
               </Link>
             </li>
             <li>
-              <Link href="./NavigationToProfile">
+              <Link href="/NavigationToProfile">
                 <a
                   className={
                     "http://localhost:3000" + asPath ===

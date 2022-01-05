@@ -1,7 +1,8 @@
 import React from "react";
-import BeforeAuthHeader from "./BeforeAuthHeader";
+import BeforeAuthHeader from "../components/BeforeAuthHeader";
 import Sidebar from "./Sidebar";
-import Followers from "./Followers";
+
+import Chats from "../components/Chats";
 
 export default function Navigation() {
   return (
@@ -11,13 +12,12 @@ export default function Navigation() {
           
           {/* <Header /> */}
           <BeforeAuthHeader />
-          <div className=" grid  sm:gap-x-4 sm:gap-y-2 sm:grid-cols-1 sm:m-[0.5rem] ... md:gap-x-6 md:gap-y-4 md:grid-cols-2 md:m-[0.75rem] ... lg:gap-x-2 lg:gap-y-4 lg:grid-cols-[300px_1fr_300px] lg:m-[rem]">
+          <div className=" grid lg:grid-cols-[300px_1fr_100px]">
             <div>
               <Sidebar />
             </div>
-        
-            <Followers />
-            
+            <Chats />
+          
           </div>
         </div>
       </div>
