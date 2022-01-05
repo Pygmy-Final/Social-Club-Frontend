@@ -19,8 +19,6 @@ export default function Example(props) {
             setOpen(false)
             props.setshowBox(false)
         }, 1200);
-
-
     }
 
     return (

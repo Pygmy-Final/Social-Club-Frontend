@@ -22,7 +22,7 @@ export default function Sidebar() {
 
   return (
     <div className="inline-block ">
-      <div class="flex flex-wrap bg-[#E7ECEF] w-full  mt-32 md:mt-16">
+      <div class="flex flex-wrap bg-[#E7ECEF] w-50  mt-32 md:mt-16">
         <div class="w-64 bg-[#E7ECEF] rounded p-0 ">
           <ul class="space-y-2 text-sm">
             <li>

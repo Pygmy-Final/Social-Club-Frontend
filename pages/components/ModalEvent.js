@@ -11,6 +11,7 @@ export default function ModalEvent(props) {
   const token = JSON.parse(localStorage.getItem("Token"));
   const [datas, dataList] = useState({});
   const [showSuccess, setshowSuccess] = useState(false)
+ 
   
   console.log(token)
   const [open, setOpen] = useState(true);
@@ -22,6 +23,7 @@ export default function ModalEvent(props) {
     $("#fademodal").fadeToggle(1000);
     setTimeout(() => {
       setOpen(false);
+      setshowSuccess(true)
       props.closeHandler();
     }, 1200);
   };
@@ -60,6 +62,7 @@ export default function ModalEvent(props) {
       .then(res => {
         console.log(res)
         setshowSuccess(true)
+        setOpen(false)
       })
       .catch(error => {
         console.log(error)
@@ -69,16 +72,17 @@ export default function ModalEvent(props) {
   console.log("59", token)
   console.log("datas ", datas);
   return (
-    open && (
+    <>
+    {open && (
       <div id="fademodal">
-        {showSuccess && <SuccessSignUp successMessage='Event Created Successfully' word='Event' />}
+        {/* { showSuccess && <SuccessSignUp successMessage='Event Created Successfully' word='Event' />} */}
         <div className="absolute top-0 left-0 z-30 w-screen h-screen bg-gray-200 opacity-75"></div>
         <div
           id="bigBoxDiv"
-          className=" inline-block absolute top-[5.3rem] left-[36.3rem] m-auto justify-center opacity-100 justify-items-center h-[10rem] w-[40.2rem] rounded-[1.5rem] bg-white z-50"
-          style={{ display: "none" }}
+          className=" inline-block absolute top-[5.3rem] left-[36.3rem] m-auto justify-center opacity-100 justify-items-center h-[10rem] w-[28.2rem] rounded-[1.5rem] bg-white z-50"
+          
         >
-          <div class="py-12 absolute left-0 top-0 p-20 bg-[#F8F8FB] rounded-md  ">
+          <div class="py-12 absolute left-0 top-0 p-20   bg-[#F8F8FB] rounded-md  ">
             <h2 class="text-2xl  font-bold text-[#1E2A3D]">Create Event</h2>
             <button className="float-right -mr-7 -mt-7" onClick={closeHandler}>
               <span class="text-black">
@@ -221,8 +225,12 @@ export default function ModalEvent(props) {
             </div>
           </div>
         </div>
+      
         
       </div>
     )
+}
+    {!open && showSuccess && <SuccessSignUp successMessage='Event Created Successfully' word='Event' />}
+    </>
   );
 }

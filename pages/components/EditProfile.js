@@ -21,7 +21,7 @@ export default function EditProfile(props) {
   return (
     open && (
     <div id="fademodal">
-      <div className="absolute top-0 left-0 z-30 w-screen h-screen bg-gray-200 opacity-75"></div>
+      <div className="absolute top-0 left-0 z-30 w-screen h-screen opacity-75"></div>
       <div>
         {/* <div  className=" inline-block absolute top-[5.3rem] left-[36.3rem] m-auto justify-center opacity-100 justify-items-center h-[10rem] w-[40.2rem] rounded-[1.5rem] bg-white z-50"
           >
