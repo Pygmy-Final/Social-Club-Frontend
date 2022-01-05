@@ -18,7 +18,6 @@ function FindMatch(props) {
     return (
         <div className='m-auto '>
             <div id='catBoxDiv' className='pt-20 grid grid-cols-5 gap-5  justify-center align-middle overflow-auto h-[46.5rem]'>
-                 
                 <CatBox hideHandler={hideHandler} />
                 <CatBox hideHandler={hideHandler} />
                 <CatBox hideHandler={hideHandler} />
