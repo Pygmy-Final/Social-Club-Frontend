@@ -29,16 +29,16 @@ export default function Sidebar() {
               <Link href="/NavigationToEventBox">
                 <a
                   className={
-                    "http://localhost:3000" + asPath ===
-                    "http://localhost:3000/components/NavigationToEventBox"
+                    "https://social-club.vercel.app" + asPath ===
+                    "https://social-club.vercel.app/NavigationToEventBox"
                       ? "flex items-center space-x-3 text-[#F8F8FB] p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]"
                       : "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"
                   }
                 >
                   <span
                     class={
-                      "http://localhost:3000" + asPath ===
-                      "http://localhost:3000/components/NavigationToEventBox"
+                      "https://social-club.vercel.app" + asPath ===
+                      "https://social-club.vercel.app/NavigationToEventBox"
                         ? "text-[#F8F8FB] hover:text-[#ffffffe8]"
                         : "text-gray-600"
                     }
@@ -66,16 +66,16 @@ export default function Sidebar() {
               <Link href="/NavigateToFindMatch">
                 <a
                   className={
-                    "http://localhost:3000" + asPath ===
-                    "http://localhost:3000/components/NavigateToFindMatch"
+                    "https://social-club.vercel.app" + asPath ===
+                    "https://social-club.vercel.app/NavigateToFindMatch"
                       ? "flex items-center space-x-3 text-[#F8F8FB] hover:text-[#ffffffe8] p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]"
                       : "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"
                   }
                 >
                   <span
                     class={
-                      "http://localhost:3000" + asPath ===
-                      "http://localhost:3000/components/NavigateToFindMatch"
+                      "https://social-club.vercel.app" + asPath ===
+                      "https://social-club.vercel.app/NavigateToFindMatch"
                         ? "text-[#F8F8FB]"
                         : "text-gray-600"
                     }
@@ -106,16 +106,16 @@ export default function Sidebar() {
               <Link href="/NavigateToChats">
                 <a
                   className={
-                    "http://localhost:3000" + asPath ===
-                    "http://localhost:3000/components/NavigateToChats"
+                    "https://social-club.vercel.app" + asPath ===
+                    "https://social-club.vercel.app/NavigateToChats"
                       ? "flex items-center hover:text-[#ffffffe8] space-x-3 text-[#F8F8FB] p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]"
                       : "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"
                   }
                 >
                   <span
                     class={
-                      "http://localhost:3000" + asPath ===
-                      "http://localhost:3000/components/NavigateToChats"
+                      "https://social-club.vercel.app" + asPath ===
+                      "https://social-club.vercel.app/NavigateToChats"
                         ? "text-[#F8F8FB]"
                         : "text-gray-600"
                     }
@@ -143,16 +143,16 @@ export default function Sidebar() {
               <Link href="/NavigationToFollowers">
                 <a
                   className={
-                    "http://localhost:3000" + asPath ===
-                    "http://localhost:3000/components/NavigationToFollowers"
+                    "https://social-club.vercel.app" + asPath ===
+                    "https://social-club.vercel.app/NavigationToFollowers"
                       ? "flex items-center space-x-3 text-[#F8F8FB] p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]"
                       : "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"
                   }
                 >
                   <span
                     class={
-                      "http://localhost:3000" + asPath ===
-                      "http://localhost:3000/components/NavigationToFollowers"
+                      "https://social-club.vercel.app" + asPath ===
+                      "https://social-club.vercel.app/NavigationToFollowers"
                         ? "text-[#F8F8FB]"
                         : "text-gray-600"
                     }
@@ -175,16 +175,16 @@ export default function Sidebar() {
               <Link href="/NavigationToProfile">
                 <a
                   className={
-                    "http://localhost:3000" + asPath ===
-                    "http://localhost:3000/components/NavigationToProfile"
+                    "https://social-club.vercel.app" + asPath ===
+                    "https://social-club.vercel.app/NavigationToProfile"
                       ? "flex items-center space-x-3 text-[#F8F8FB] p-4  font-medium hover:bg[#503E9D]  bg-[#503E9D] active:bg-[#503E9D] focus:shadow-outline rounded-r-[16.84px]"
                       : "flex items-center space-x-3 text-gray-700 p-2 rounded-md font-medium hover:bg-[#503E9D] focus:bg-gray-200 focus:shadow-outline"
                   }
                 >
                   <span
                     class={
-                      "http://localhost:3000" + asPath ===
-                      "http://localhost:3000/components/NavigationToProfile"
+                      "https://social-club.vercel.app" + asPath ===
+                      "https://social-club.vercel.app/NavigationToProfile"
                         ? "text-[#F8F8FB]"
                         : "text-gray-600"
                     }
@@ -221,7 +221,7 @@ export default function Sidebar() {
                       <p class="text-[#F8F8FB] mt-3 mb-3">
                         Create Your Event Now
                       </p>
-                      <a href="/components/test">
+                      <a href="/test">
                         <button
                           class="p-2  text-[#F8F8FB] font-semibold text-base bg-[#FB6D3A] w-[66px] h-[36] rounded-full"
                           type="button"

@@ -8,7 +8,7 @@ import { map } from 'jquery';
 import FindMatchBox from './FindMatchBox';
 import BigBox from './BigBox';
 
-const backendUrl = "http://project-final-401.herokuapp.com";
+const backendUrl = "https://project-final-401.herokuapp.com";
 const messageUrl = backendUrl + `/chat/message/`;
 
 function CatBox(props) {
