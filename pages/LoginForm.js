@@ -6,7 +6,7 @@ import React, { useState,useEffect } from "react";
 import { useRouter } from "next/router";
 import signImage from "../components/images/signImage.png";
 
-const backendUrl = "http://project-final-401.herokuapp.com";
+const backendUrl = "https://project-final-401.herokuapp.com";
 const tokenUrl = backendUrl + `/api/token/`;
 
 export default function LoginForm() {

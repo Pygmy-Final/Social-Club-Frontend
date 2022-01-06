@@ -9,7 +9,7 @@ import $ from 'jquery';
 import Image from "next/image";
 import signup from '../components/images/signup.png'
 
-const backendUrl = "http://project-final-401.herokuapp.com";
+const backendUrl = "https://project-final-401.herokuapp.com";
 const signupUrl = backendUrl + `/accounts/customuser/create-user/`;
 const tokenUrl = backendUrl + `/api/token/`;
 

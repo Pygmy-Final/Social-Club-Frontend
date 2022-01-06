@@ -11,7 +11,7 @@ export default function Followers() {
 
 
   const allData = () => {
-    const backendUrl = "http://project-final-401.herokuapp.com";
+    const backendUrl = "https://project-final-401.herokuapp.com";
     const followListUrl = backendUrl + "/accounts/customuser/user-follow/";
     setUserFollowerUrl(followListUrl);
     const token = JSON.parse(localStorage.getItem("Token"));

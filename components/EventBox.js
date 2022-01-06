@@ -39,7 +39,7 @@ const EventBox = () => {
 
   const allData = () => {
     const username = JSON.parse(localStorage.getItem("Creads"));
-    const backendUrl = "http://project-final-401.herokuapp.com";
+    const backendUrl = "https://project-final-401.herokuapp.com";
     const eventUrl = backendUrl + "/events/event/";
     setEvent(eventUrl);
 
@@ -56,7 +56,7 @@ const EventBox = () => {
     const config = { headers: { Authorization: "Bearer " + tokendb } };
 
     await axios
-      .get("http://project-final-401.herokuapp.com/events/event/", config)
+      .get("https://project-final-401.herokuapp.com/events/event/", config)
       .then((data) => {
         setEventList(data.data);
       
@@ -129,7 +129,7 @@ const EventBox = () => {
                     {value.EventCategory == "Sports" && (
                       <Image
                         className="absolute inline-block  rounded-[3rem] "
-                        src={sports}
+                        src={sport}
                         alt="Dance picture"
                       />
                     )}

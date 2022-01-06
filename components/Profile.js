@@ -36,7 +36,7 @@ function Profile() {
   const profilePage = async () => {
     const config = { headers: { Authorization: "Bearer " + JSON.parse(localStorage.getItem("Token")) } };
 
-    await axios.get('http://project-final-401.herokuapp.com/accounts/customuser/user/?search=${JSON.parse(localStorage.getItem("Creads"))}', config).then((data) => {
+    await axios.get('https://project-final-401.herokuapp.com/accounts/customuser/user/?search=${JSON.parse(localStorage.getItem("Creads"))}', config).then((data) => {
       setProfileData(data.data);
       // console.log("data", data.data);
     });
@@ -45,7 +45,7 @@ function Profile() {
     const config = { headers: { Authorization: "Bearer " + JSON.parse(localStorage.getItem("Token")) } };
 
     await axios
-      .get("http://project-final-401.herokuapp.com/events/event/", config)
+      .get("https://project-final-401.herokuapp.com/events/event/", config)
       .then((data) => {
         setEventList(data.data);
         console.log("data", data.data);

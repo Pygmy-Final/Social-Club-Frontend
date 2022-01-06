@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from "next/image";
 
-const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example`;
+const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://social-club.vercel.app/`;
 import axios from "axios";
 import { useState, useEffect } from "react";
 export default function QrCode() {

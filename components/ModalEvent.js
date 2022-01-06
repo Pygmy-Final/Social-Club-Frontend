@@ -5,7 +5,7 @@ import $ from "jquery";
 import axios from "axios";
 import SuccessSignUp from './SuccessSignUp'
 
-const backendUrl = "http://project-final-401.herokuapp.com";
+const backendUrl = "https://project-final-401.herokuapp.com";
 const createEventUrl = backendUrl + "/events/event/create/";
 export default function ModalEvent(props) {
   const token = JSON.parse(localStorage.getItem("Token"));
