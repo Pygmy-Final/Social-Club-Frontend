@@ -29,14 +29,11 @@ export default function Followers() {
   const followData = async () => {
     const config = { headers: { Authorization: "Bearer " + tokendb } };
 
-    await axios
-      .get(
-        "https://project-final-401.herokuapp.com/accounts/customuser/user-follow/",
+    await axios.get("https://project-final-401.herokuapp.com/accounts/customuser/user-follow/",
         config
-      )
-      .then((data) => {
-        setUserFollower(data.data);
-        SetUserID(data.data[0].from_user.id);
+      ).then((data) => {
+        setUserFollower(data?.data);
+        SetUserID(data?.data[0]?.from_user.id);
 
         localStorage.setItem("MyID", JSON.stringify(UserID));
       });

@@ -59,7 +59,7 @@ const EventBox = () => {
       .get("http://project-final-401.herokuapp.com/events/event/", config)
       .then((data) => {
         setEventList(data.data);
-        console.log("data", data.data);
+      
       });
   };
 

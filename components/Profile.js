@@ -38,7 +38,7 @@ function Profile() {
 
     await axios.get('http://project-final-401.herokuapp.com/accounts/customuser/user/?search=${JSON.parse(localStorage.getItem("Creads"))}', config).then((data) => {
       setProfileData(data.data);
-      console.log("data", data.data);
+      // console.log("data", data.data);
     });
   };
   const eventData = async () => {
