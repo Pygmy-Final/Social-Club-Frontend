@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 export default function Example(props) {
     const [open, setOpen] = useState(true)
-    
+
     useEffect(() => {
         $("#bigBoxDiv").fadeIn(1000)
     });
@@ -19,8 +19,6 @@ export default function Example(props) {
             setOpen(false)
             props.setshowBox(false)
         }, 1200);
-
-
     }
 
     return (
@@ -33,7 +31,7 @@ export default function Example(props) {
             </div>
             <div className='overflow-auto grid grid-cols-3 gap-5 divide-y h-[90%] dark:divide-gray-200/5 p-5'>
                 {/* here we add the profile that intrest in this Category */}
-              
+
                 <ProfileSmallBox />
                 <ProfileSmallBox />
                 <ProfileSmallBox />
