@@ -1,3 +1,6 @@
+
+import Image from "next/image";
+
 import React from 'react'
 import CatBox from './CatBox'
 import { useState } from 'react'
@@ -6,7 +9,6 @@ import $ from 'jquery';
 import { useEffect } from "react";
 import axios from "axios";
 import spining from "./images/spining.gif"
-import Image from "next/image";
 
 
 function FindMatch(props) {
@@ -14,13 +16,14 @@ function FindMatch(props) {
     const [bigBoxInfo, setbigBoxInfo] = useState([])
     const [showBox, setshowBox] = useState(false)
     const [isLoading, setLoading] = useState(true);
+    
     const [filteredLists, setfilteredLists] = useState(null)
     const [userInterests, setuserInterests] = useState(['Reading', 'Cycling', 'Hiking', 'Drawing', 'Photography', 'Swimming', 'Sleeping', 'Sports', 'Gaming'])
     const [followers, setfollowers] = useState({})
     useEffect(() => {
 
         // ['Reading', 'Cycling', 'Hiking', 'Drawing', 'Photography', 'Swimming', 'Sleeping', 'Sports', 'Gaming']
-        getMatches(userInterests).then(data => setfilteredLists(data)).then(data => { setLoading(true) })
+        getMatches(userInterests).then(data => setfilteredLists(data)).then(data => { setLoading(false) })
         getFollowers().then(data => setfollowers(data))
 
 
@@ -57,8 +60,8 @@ function FindMatch(props) {
 
 
     if (isLoading) {
-        return <div  className="flex h-10 w-10 h-max w-max  p-[5rem] m-auto drop-shadow-2xl"><div className=" inline-block m-auto pt-[4rem] h-max w-max rounded-full "><div className="relative inline-block m-auto rounded-full"><Image className="rounded-full animate-ping hover:animate-bounce" height={500} width={700} src={spining}/></div></div></div>;
-      }
+                return <div  className="flex h-10 w-10 h-max w-max  p-[5rem] m-auto drop-shadow-2xl"><div className=" inline-block m-auto pt-[4rem] h-max w-max rounded-full "><div className="relative inline-block m-auto rounded-full"><Image className="rounded-full animate-ping hover:animate-bounce" height={500} width={700} src={spining}/></div></div></div>;
+              }
 
     const hideHandler = async () => {
         $("#catBoxDiv").fadeToggle(1000)

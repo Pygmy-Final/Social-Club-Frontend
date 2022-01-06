@@ -109,7 +109,7 @@ const BeforeAuthHeader = () => {
             ></a>
             <img
               className="inline-block mr-[2rem] rounded-full"
-              src="https://www.w3schools.com/howto/img_avatar.png"
+              src="https://media.istockphoto.com/photos/portrait-of-smiling-muslim-woman-outdoors-picture-id1170356638?b=1&k=20&m=1170356638&s=170667a&w=0&h=i53syXEbOtoc9feMQNajxqOHx7RooPmgpq1TGWFjOjw="
               width={30}
               height={30}
               alt="Avatar"
