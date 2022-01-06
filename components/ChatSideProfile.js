@@ -8,7 +8,7 @@ function ChatSideProfile(props) {
         <div className='mx-10  ml-40 text-[#15263a] relative mt-1 grid grid-cols-[1fr] m-auto justify-items-start gap-1 rounded-[0.8rem] max-w-full  p-3 py-16 '>
             <br />
             <div className='m-auto'>
-                <Image src={randomUser} height={130} width={130} className='inline-block object-cover ml-10 rounded-full hover:will-change-transform ' placeholder='random person' />
+                <img src='https://media.istockphoto.com/photos/headshot-portrait-of-smiling-millennial-woman-posing-at-home-kitchen-picture-id973962166?k=20&m=973962166&s=612x612&w=0&h=eAulX95kIS5eebrZHojWMiOwZtaymBQYBvtwpDbQxy0=' height={130} width={130} className='inline-block object-cover ml-10 rounded-full hover:will-change-transform ' placeholder='random person' />
             </div>
             <div className='content-center m-auto'>
                 <p className='text-sm font-bold truncate hover:text-[#503E9D] ...'>{props.nameOfUser}</p>
