@@ -9,14 +9,12 @@ import photography from "./images/photography.jpg";
 import read from "./images/read.jpg";
 import sleep from "./images/sleep.jpg";
 import swimming from "./images/swimming.jpg";
-
-
-
-
+import spining from "./images/spining.gif";
 import glassy from "./images/glassy.png";
 import avatar from "./images/avatar.png";
 import axios from "axios";
 import { useEffect, useState } from "react";
+
 //  to test this EventBox in index html use this 👇🏻
 {
   /* <div className=' grid  sm:m-7 md:m-8 lg:m-10 sm:gap-x-4 sm:gap-y-2 sm:grid-cols-1 sm:m-[0.5rem] ... md:gap-x-6 md:gap-y-4 md:grid-cols-2 md:m-[0.75rem] ... lg:gap-x-2 lg:gap-y-4 lg:grid-cols-3 lg:m-[1rem]'>
@@ -34,6 +32,7 @@ const EventBox = () => {
   const [eventList, setEventList] = useState([]);
   const [tokendb, setTokendb] = useState("");
   const [userId, setUserId] = useState("");
+  const [isLoading, setLoading] = useState(true);
 
   
 
@@ -59,12 +58,16 @@ const EventBox = () => {
       .get("https://project-final-401.herokuapp.com/events/event/", config)
       .then((data) => {
         setEventList(data.data);
+      setLoading(false);
       
       });
   };
 
   eventData();
-
+  
+  if (isLoading) {
+    return <div  className="flex h-10 w-10 h-max w-max  p-[5rem] m-auto drop-shadow-2xl"><div className=" inline-block m-auto pt-[4rem] h-max w-max rounded-full "><div className="relative inline-block m-auto rounded-full"><Image className="rounded-full animate-ping hover:animate-bounce" height={500} width={700} src={spining}/></div></div></div>;
+  }
   return (
     <div className="inline-block flex-col divide-y h-[47rem] overflow-auto  dark:divide-gray-200/5  ">
       <h1 className="mt-10 mb-8 ml-4 text-[#1E2A3D] text-[24px]">
