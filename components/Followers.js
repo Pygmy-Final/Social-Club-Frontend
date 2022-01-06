@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import spining from "./images/spining.gif";
+import Image from "next/image";
 
 export default function Followers() {
   const [userFollowerUrl, setUserFollowerUrl] = useState([]);
@@ -8,6 +10,7 @@ export default function Followers() {
   const [tokendb, setTokendb] = useState("");
   const [userFollower, setUserFollower] = useState([]);
   const [UserID,SetUserID]= useState("");
+  const [isLoading, setLoading] = useState(true);
 
 
   const allData = () => {
@@ -36,13 +39,17 @@ export default function Followers() {
         SetUserID(data?.data[0]?.from_user.id);
 
         localStorage.setItem("MyID", JSON.stringify(UserID));
+      setLoading(false);
+
       });
 
   };
 
   followData();
 
-  
+  if (isLoading) {
+    return <div  className="flex h-10 w-10 h-max w-max  p-[5rem] m-auto drop-shadow-2xl"><div className=" inline-block m-auto pt-[4rem] h-max w-max rounded-full "><div className="relative inline-block m-auto rounded-full"><Image className="rounded-full animate-ping hover:animate-bounce" height={500} width={700} src={spining}/></div></div></div>;
+  }
   return (
     <>
       <div className="flex mt-10 flex-col overflow-auto divide-y h-[40rem] dark:divide-gray-200/5  ">

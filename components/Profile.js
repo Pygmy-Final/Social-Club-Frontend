@@ -8,6 +8,7 @@ import follow from "./images/follow.png";
 import Stars from "./Stars.js";
 import EditPro from "./EditPro.js";
 import axios from "axios";
+import spining from "./images/spining.gif";
 import { useState, useEffect } from "react";
 
 
@@ -17,7 +18,7 @@ function Profile() {
   const [open, setOpen] = useState(false);
   const [profileData, setProfileData] = useState([]);
   const [eventList, setEventList] = useState([]);
-  
+  const [isLoading, setLoading] = useState(true);
 
 
   const openHandler = () => {
@@ -38,6 +39,8 @@ function Profile() {
 
     await axios.get(`https://project-final-401.herokuapp.com/accounts/customuser/user/?search=${JSON.parse(localStorage.getItem("Creads"))}`, config).then((data) => {
       setProfileData(data.data);
+      setLoading(false);
+
       // console.log("data", data.data);
     });
   };
@@ -52,6 +55,9 @@ function Profile() {
       });
   };
   console.log("profileData", profileData);
+  if (isLoading) {
+    return <div  className="flex h-10 w-10 h-max w-max  p-[5rem] m-auto drop-shadow-2xl"><div className=" inline-block m-auto pt-[4rem] h-max w-max rounded-full "><div className="relative inline-block m-auto rounded-full"><Image className="rounded-full animate-ping hover:animate-bounce" height={500} width={700} src={spining}/></div></div></div>;
+  }
   return (
     <>
       {!open &&
