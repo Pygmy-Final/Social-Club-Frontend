@@ -189,7 +189,7 @@ export default function SignupForm() {
               >
                 Sign up
               </button>
-              <Link href='/components/LoginForm'>
+              <Link href='/LoginForm'>
                 <p class="flex justify-between inline-block mt-4 text-xs text-gray-500 cursor-pointer hover:text-black">
                   Already registered?
                 </p>
