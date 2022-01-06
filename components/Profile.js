@@ -10,16 +10,15 @@ import EditPro from "./EditPro.js";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-const username = JSON.parse(localStorage.getItem("Creads"));
-const backendUrl = "http://project-final-401.herokuapp.com";
-const profileUrl = backendUrl + `/accounts/customuser/user/?search=${username}`;
-const eventUrl = backendUrl + `/events/event/`;
+
+
 
 function Profile() {
   const [open, setOpen] = useState(false);
-
   const [profileData, setProfileData] = useState([]);
   const [eventList, setEventList] = useState([]);
+  
+
 
   const openHandler = () => {
     setOpen(true);
@@ -28,22 +27,22 @@ function Profile() {
     setOpen(false);
   };
 
-  const token = JSON.parse(localStorage.getItem("Token"));
-
+  
   useEffect(() => {
+    
     profilePage();
     eventData();
   }, []);
   const profilePage = async () => {
-    const config = { headers: { Authorization: "Bearer " + token } };
+    const config = { headers: { Authorization: "Bearer " + JSON.parse(localStorage.getItem("Token")) } };
 
-    await axios.get(profileUrl, config).then((data) => {
+    await axios.get('http://project-final-401.herokuapp.com/accounts/customuser/user/?search=${JSON.parse(localStorage.getItem("Creads"))}', config).then((data) => {
       setProfileData(data.data);
       console.log("data", data.data);
     });
   };
   const eventData = async () => {
-    const config = { headers: { Authorization: "Bearer " + token } };
+    const config = { headers: { Authorization: "Bearer " + JSON.parse(localStorage.getItem("Token")) } };
 
     await axios
       .get("http://project-final-401.herokuapp.com/events/event/", config)
@@ -85,7 +84,7 @@ function Profile() {
                 >
                   {value.first_name}
                   {value.last_name}
-                 
+
                 </h3>
                 <h3 className="absolute xsm:top-[6rem] xsm:left-[6rem] sm:top-[7.7rem] sm:left-[6.5rem] md:top-[9.5rem] md:left-[8.5rem]  lg:top-[13rem] lg:left-[10.5rem] mt-14 -ml-2">
                   <Stars />
@@ -130,10 +129,10 @@ function Profile() {
                             <b className="text-[#15263a]"> - {val.EventName}</b>
                             <div class="p-6 bg-white border-b opacity-80 rounded border-gray-200 mt-4 w-[59rem]">
                               <p><b>About Event : &nbsp;</b>
-                              {val.EventDescription}</p>
+                                {val.EventDescription}</p>
                               <b />
                               <p><b>EventLocation:&nbsp;</b> {val.EventLocation}
-                              <b/></p>
+                                <b /></p>
                               <b>Event Type: &nbsp;</b> {val.EventCategory}
                             </div>
                           </>
